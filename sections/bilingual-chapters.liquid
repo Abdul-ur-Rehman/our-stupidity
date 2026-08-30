@@ -1,0 +1,223 @@
+<style>
+  .bilingual-chapters {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  .bilingual-chapters__header {
+    margin-bottom: 3.5rem;
+  }
+
+  .bilingual-chapters__heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    letter-spacing: 0.15em;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin: 0 0 0.75rem 0;
+    line-height: 1;
+  }
+
+  .bilingual-chapters__hint {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: #E3000F;
+    text-transform: uppercase;
+  }
+
+  .bilingual-chapters__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 749px) {
+    .bilingual-chapters__grid {
+      grid-template-columns: 1fr;
+    }
+    .bilingual-chapters__heading {
+      font-size: 2.5rem;
+    }
+  }
+
+  .bilingual-card {
+    position: relative;
+    background: #0f0f0f;
+    border-top: 3px solid #E3000F;
+    padding: 3rem 2.5rem 3rem;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background 0.3s ease, transform 0.3s ease;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Large watermark number */
+  .bilingual-card::before {
+    content: attr(data-num);
+    position: absolute;
+    bottom: -0.2em;
+    right: 0.1em;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 9rem;
+    line-height: 1;
+    color: #1c1c1c;
+    pointer-events: none;
+    user-select: none;
+    transition: color 0.3s ease;
+  }
+
+  .bilingual-card:hover {
+    background: #141414;
+    transform: translateY(-6px);
+  }
+
+  .bilingual-card:hover::before {
+    color: #2a0003;
+  }
+
+  .bilingual-card__label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: #E3000F;
+    margin: 0 0 1rem 0;
+    display: block;
+  }
+
+  .bilingual-card__title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.15;
+    display: block;
+    position: relative;
+  }
+
+  .bilingual-card__text {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: #999999;
+    position: relative;
+    flex: 1;
+  }
+
+  .bilingual-card__text p {
+    margin: 0;
+  }
+
+  /* Red bottom line on hover */
+  .bilingual-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #E3000F;
+    transition: width 0.4s ease;
+  }
+
+  .bilingual-card:hover::after {
+    width: 100%;
+  }
+</style>
+
+<div class="bilingual-chapters color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+
+    <div class="bilingual-chapters__header">
+      {%- unless section.settings.title == blank -%}
+        <h2 class="bilingual-chapters__heading">{{ section.settings.title }}</h2>
+      {%- endunless -%}
+      <p class="bilingual-chapters__hint">— hover to read in English</p>
+    </div>
+
+    <div class="bilingual-chapters__grid">
+
+      <div class="bilingual-card" data-num="01">
+        <span class="bilingual-card__label">CHAPTER 01</span>
+        <p class="bilingual-card__title lang-ja">ザ・プロブレム</p>
+        <p class="bilingual-card__title lang-en">THE PROBLEM</p>
+        <div class="bilingual-card__text lang-ja">
+          <p>すべてのアニメストアが同じ汎用プリントを販売していました。魂がない。ストーリーがない。ただの商品。私たちはより良い扱いを受ける価値のあるキャラクターを見ました — ファンにとって意味のあるアイコン。</p>
+        </div>
+        <div class="bilingual-card__text lang-en">
+          <p>Every anime store sold the same generic prints. No soul. No story. Just merchandise. We saw characters that deserved better — icons that meant something to their fans.</p>
+        </div>
+      </div>
+
+      <div class="bilingual-card" data-num="02">
+        <span class="bilingual-card__label">CHAPTER 02</span>
+        <p class="bilingual-card__title lang-ja">ザ・リアライゼーション</p>
+        <p class="bilingual-card__title lang-en">THE REALIZATION</p>
+        <div class="bilingual-card__text lang-ja">
+          <p>衣服はアイデンティティです。それはあなたが言葉が失敗したときに世界に誰であるかを伝える方法です。人々はアニメではなく、それらのキャラクターが表す価値観を着たかったのです。</p>
+        </div>
+        <div class="bilingual-card__text lang-en">
+          <p>Clothing is identity. It's how you tell the world who you are when words fail. We realized people didn't want to wear anime — they wanted to wear the values those characters represented.</p>
+        </div>
+      </div>
+
+      <div class="bilingual-card" data-num="03">
+        <span class="bilingual-card__label">CHAPTER 03</span>
+        <p class="bilingual-card__title lang-ja">ザ・クリエーション</p>
+        <p class="bilingual-card__title lang-en">THE CREATION</p>
+        <div class="bilingual-card__text lang-ja">
+          <p>限定ドロップ。高品質プリント。本物のストーリーテリング。すべてのピースがキャラクターを運びます。すべてのドロップはイベントです。なくなったら、なくなりました。</p>
+        </div>
+        <div class="bilingual-card__text lang-en">
+          <p>Limited drops. High-quality prints. Real storytelling. Every piece carries a character. Every drop is an event. No endless restocks — when it's gone, it's gone.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Bilingual Chapters",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section heading",
+      "default": "THE JOURNEY"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        { "value": "scheme-1", "label": "Scheme 1" },
+        { "value": "scheme-2", "label": "Scheme 2" }
+      ],
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "label": "Top padding",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "label": "Bottom padding",
+      "default": 80
+    }
+  ],
+  "presets": [
+    { "name": "Bilingual Chapters" }
+  ]
+}
+{% endschema %}

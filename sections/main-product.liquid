@@ -99,12 +99,10 @@
                   </p>
                 {%- when 'title' -%}
                   <div class="product__title" {{ block.shopify_attributes }}>
+                    {%- if product.collections.first != blank -%}
+                      <span class="product__collection-badge">{{ product.collections.first.title }}</span>
+                    {%- endif -%}
                     <h1>{{ product.title | escape }}</h1>
-                    <a href="{{ product.url }}" class="product__title">
-                      <h2 class="h1">
-                        {{ product.title | escape }}
-                      </h2>
-                    </a>
                   </div>
                 {%- when 'price' -%}
                   <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
@@ -499,6 +497,18 @@
                     section_id: section.id,
                     show_pickup_availability: true
                   -%}
+                  {%- unless product.available -%}
+                    <button type="button" class="notify-btn">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                      NOTIFY ME WHEN AVAILABLE
+                    </button>
+                  {%- endunless -%}
+                  <ul class="product-features">
+                    <li>200 GSM Premium Cotton</li>
+                    <li>Relaxed Fit</li>
+                    <li>DTF Print – High Quality</li>
+                    <li>Pre-shrunk &amp; Bio-Washed</li>
+                  </ul>
                 {%- when 'rating' -%}
                   {%- if product.metafields.reviews.rating.value != blank -%}
                     <div class="rating-wrapper">
@@ -752,6 +762,48 @@
     </div>
   </product-component>
 </product-info>
+
+<div class="sticky-atc" id="sticky-atc" aria-hidden="true">
+  <div class="sticky-atc__info">
+    <span class="sticky-atc__title">{{ product.title | escape }}</span>
+    <span class="sticky-atc__price">{{ product.selected_or_first_available_variant.price | money }}</span>
+  </div>
+  <div class="sticky-atc__actions">
+    {%- if product.available -%}
+      <button
+        type="submit"
+        form="{{ 'product-form-' | append: section.id }}"
+        class="sticky-atc__btn"
+      >
+        ADD TO CART
+      </button>
+    {%- else -%}
+      <button type="button" class="sticky-atc__btn" style="background:#333;cursor:default">SOLD OUT</button>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  (function () {
+    var bar = document.getElementById('sticky-atc');
+    if (!bar) return;
+    var form = document.getElementById('product-form-{{ section.id }}');
+    var buyBtn = form && form.querySelector('[type="submit"]');
+    if (!buyBtn) return;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          bar.classList.remove('is-visible');
+          bar.setAttribute('aria-hidden', 'true');
+        } else {
+          bar.classList.add('is-visible');
+          bar.setAttribute('aria-hidden', 'false');
+        }
+      });
+    }, { threshold: 0 });
+    observer.observe(buyBtn);
+  })();
+</script>
 
 {% schema %}
 {

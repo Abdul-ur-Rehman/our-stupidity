@@ -1,0 +1,99 @@
+{{ 'custom.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="cta-banner animate-fade-up color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding"
+  {% if section.settings.bg_image != blank %}
+    style="background-image: url({{ section.settings.bg_image | image_url: width: 1920 }})"
+  {% endif %}
+>
+  {%- if section.settings.eyebrow != blank -%}
+    <p class="cta-banner__eyebrow">{{ section.settings.eyebrow }}</p>
+  {%- endif -%}
+
+  {%- if section.settings.heading != blank -%}
+    <h2 class="cta-banner__heading">{{ section.settings.heading }}</h2>
+  {%- endif -%}
+
+  {%- if section.settings.red_line != blank -%}
+    <p class="cta-banner__red-line">{{ section.settings.red_line }}</p>
+  {%- endif -%}
+
+  {%- if section.settings.subtext != blank -%}
+    <p class="cta-banner__subtext">{{ section.settings.subtext }}</p>
+  {%- endif -%}
+
+  {%- if section.settings.button_label != blank -%}
+    <a
+      href="{{ section.settings.button_link | default: '#' }}"
+      class="button button--primary"
+    >
+      {{ section.settings.button_label }}
+    </a>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "CTA Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        { "value": "scheme-1", "label": "Scheme 1" },
+        { "value": "scheme-2", "label": "Scheme 2" },
+        { "value": "scheme-5", "label": "Scheme 5" }
+      ],
+      "default": "scheme-1",
+      "label": "Color scheme"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "OUR STUPIDITY"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading (white)",
+      "default": "THEY'LL NEVER UNDERSTAND WHY YOU WEAR IT."
+    },
+    {
+      "type": "text",
+      "id": "red_line",
+      "label": "Red line",
+      "default": "YOU DON'T NEED THEM TO."
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext (caps)",
+      "default": "FREEDOM.  CREATIVITY.  SELF-EXPRESSION."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button text",
+      "default": "EXPLORE CHRONICLES"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA Banner"
+    }
+  ]
+}
+{% endschema %}

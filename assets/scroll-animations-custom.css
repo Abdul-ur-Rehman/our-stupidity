@@ -1,0 +1,12 @@
+/* Scroll fade-up animations — applied to section wrappers */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .animate-fade-up.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}

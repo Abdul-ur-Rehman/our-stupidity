@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
@@ -6,70 +15,91 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Browse our latest products",
+            "heading": "DIFFERENT IS THE POINT.",
             "heading_size": "h0"
           }
         },
-        "button": {
-          "type": "buttons",
+        "text": {
+          "type": "text",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "text": "Built for those who create before they confirm.",
+            "text_style": "body"
           }
         }
       },
       "block_order": [
         "heading",
-        "button"
+        "text"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
+        "image": "shopify://shop_images/hero-section.png",
+        "image_overlay_opacity": 30,
+        "image_height": "adapt",
         "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-1",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "left",
         "show_text_below": false
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "countdown": {
+      "type": "countdown-timer",
+      "settings": {}
+    },
+    "story_teaser": {
+      "type": "image-with-text",
+      "blocks": {
+        "title": {
+          "type": "heading",
+          "settings": {
+            "heading": "私のストーリー",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>私たちは常識に疲れて「アワー・スチューピディティ」を始めました。すべてのピースは反逆の場所から生まれます — 私たちを動かすキャラクターとストーリーに触発されて。</p><p>トレンドなし。妥協なし。純粋で、ありのままの表現だけ。</p><p>これははみ出し者のため、夢想家のため、同じ道をたどることを拒む者たちのためです。</p>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "VIEW FULL STORY →",
+            "button_link": "shopify://pages/brand-story",
+            "button_style_secondary": true
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "text",
+        "button"
+      ],
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
+        "image": "shopify://shop_images/itachii.png",
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
         "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "countdown",
+    "story_teaser"
   ]
 }

@@ -1,0 +1,731 @@
+/* ===================================================
+   OUR STUPIDITY — Custom styles
+   Overrides Dawn defaults after base.css loads
+   =================================================== */
+
+/* Bebas Neue for all headings */
+:root {
+  --font-heading-family: 'Bebas Neue', Impact, sans-serif;
+  --font-heading-style: normal;
+  --font-heading-weight: 400;
+  --font-body-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ---- TYPOGRAPHY ---- */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4,
+.card__heading,
+.card__heading a {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Red accent span — used for the period in hero headline */
+.accent-red {
+  color: #E3000F;
+}
+
+/* ---- INTERACTIVE BRAND STORY PAGE ---- */
+/* Chapter cards with hover effect */
+.multicolumn .multicolumn-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-left: 3px solid transparent;
+}
+
+.multicolumn-card:hover {
+  border-left-color: #E3000F;
+  transform: translateX(8px);
+}
+
+.multicolumn-card__title {
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  color: #E3000F;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.multicolumn-card__heading {
+  color: #ffffff;
+  font-size: 20px;
+  margin-bottom: 16px;
+  line-height: 1.2;
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  letter-spacing: 0.08em;
+}
+
+.multicolumn-card__text {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #999999;
+}
+
+/* Rich text animations */
+.rich-text {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered chapter reveal */
+.multicolumn-card:nth-child(1) {
+  animation: fadeInUp 0.8s ease-out 0.1s backwards;
+}
+
+.multicolumn-card:nth-child(2) {
+  animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.multicolumn-card:nth-child(3) {
+  animation: fadeInUp 0.8s ease-out 0.3s backwards;
+}
+
+/* Manifesto section pop effect */
+.rich-text--manifesto {
+  animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Story intro with line accent */
+.rich-text--story-intro::before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #E3000F, transparent);
+  margin: 0 auto 32px;
+}
+
+/* Manifesto tagline styling */
+.rich-text p:first-child {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #E3000F;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+/* ---- COUNTDOWN TIMER ---- */
+.countdown-wrapper {
+  background: #0a0a0a;
+  padding: 32px 0;
+  border-top: 1px solid #222;
+  border-bottom: 2px solid #E3000F;
+}
+
+.countdown-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.countdown-label {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #E3000F;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.countdown-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.countdown-value {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 48px;
+  letter-spacing: 0.05em;
+  color: #fff;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.countdown-sep {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 48px;
+  color: #C9A84C;
+  opacity: 0.6;
+  margin: 0 2px;
+  line-height: 1;
+}
+
+.countdown-label-small {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6B6B6B;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .countdown-value {
+    font-size: 32px;
+  }
+  .countdown-sep {
+    font-size: 32px;
+  }
+  .countdown-display {
+    gap: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-wrapper {
+    padding: 20px 0;
+  }
+  .countdown-value {
+    font-size: 24px;
+  }
+  .countdown-sep {
+    font-size: 24px;
+  }
+  .countdown-label-small {
+    font-size: 8px;
+  }
+}
+
+/* ---- ANNOUNCEMENT BAR ---- */
+.announcement-bar {
+  background-color: #0a0a0a;
+  border-bottom: 1px solid #222;
+}
+
+/* ---- HEADER ---- */
+.header {
+  background-color: #0a0a0a;
+  border-bottom: 1px solid #1e1e1e;
+}
+
+.header__heading-link,
+.header__heading-link:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header__menu-item,
+.header__menu-item a {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1.3rem;
+}
+
+.header__menu-item a:hover {
+  color: #E3000F;
+  text-decoration: none;
+}
+
+.header__icon svg,
+.header__icon path {
+  fill: #fff;
+  stroke: #fff;
+}
+
+/* ---- BUTTONS ---- */
+.button,
+.btn {
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* Primary button: red */
+.button--primary,
+.button:not(.button--secondary):not(.button--tertiary) {
+  background-color: #E3000F;
+  color: #fff;
+  border-color: #E3000F;
+}
+
+.button--primary:hover,
+.button:not(.button--secondary):not(.button--tertiary):hover {
+  background-color: #b5000c;
+  border-color: #b5000c;
+  color: #fff;
+}
+
+/* Secondary/outline button */
+.button--secondary {
+  background-color: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+
+.button--secondary:hover {
+  background-color: #fff;
+  color: #0a0a0a;
+}
+
+/* ---- PRODUCT CARDS ---- */
+.card-wrapper {
+  background-color: #111111;
+}
+
+.card__content,
+.card__information {
+  background-color: #111111;
+}
+
+.card__heading,
+.card__heading a {
+  color: #fff;
+  font-size: 1.8rem;
+  letter-spacing: 0.05em;
+}
+
+.price,
+.price__regular,
+.price .money {
+  color: #E3000F;
+  font-weight: 600;
+}
+
+/* Sold Out / Sale badges */
+.badge {
+  border-radius: 0;
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  letter-spacing: 0.1em;
+  font-size: 1.1rem;
+}
+
+.badge--sold-out {
+  background-color: #E3000F;
+  color: #fff;
+}
+
+/* Sold out overlay on card image */
+.card__media.sold-out-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(227, 0, 15, 0.15), transparent);
+  pointer-events: none;
+}
+
+/* ---- PRODUCT PAGE ---- */
+.product__title {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(3.2rem, 6vw, 6rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.product__collection-badge {
+  display: inline-block;
+  color: #E3000F;
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  letter-spacing: 0.15em;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.product__price .price,
+.product__price .money {
+  color: #E3000F;
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+/* Square size/variant pills */
+.variant-input-wrapper label,
+.product-form__input--pill label {
+  border-radius: 0;
+  border: 1px solid #444;
+  color: #fff;
+  background: transparent;
+  min-width: 4.4rem;
+  text-align: center;
+  padding: 0.8rem 1.2rem;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.variant-input-wrapper input:checked + label,
+.product-form__input--pill input:checked + label {
+  border-color: #E3000F;
+  color: #E3000F;
+  background: transparent;
+}
+
+/* Product feature bullets */
+.product-features {
+  list-style: none;
+  padding: 0;
+  margin: 1.6rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.product-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.product-features li::before {
+  content: '';
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-color: #E3000F;
+  clip-path: polygon(0 50%, 40% 100%, 100% 0, 40% 60%);
+  flex-shrink: 0;
+}
+
+/* "Notify me" button */
+.notify-btn {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  background: transparent;
+  border: 1px solid #444;
+  color: #999;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.notify-btn:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+/* ---- TRUST BADGES ---- */
+.trust-badges {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  padding: 3rem 2rem;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  margin: 3rem 0;
+}
+
+.trust-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.8rem;
+}
+
+.trust-badge svg,
+.trust-badge img {
+  width: 3.2rem;
+  height: 3.2rem;
+  color: #E3000F;
+  fill: #E3000F;
+}
+
+.trust-badge strong {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.trust-badge span {
+  font-size: 1.2rem;
+  color: #999;
+  line-height: 1.4;
+}
+
+@media screen and (max-width: 750px) {
+  .trust-badges {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---- STICKY ATC BAR ---- */
+.sticky-atc {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #111;
+  border-top: 2px solid #E3000F;
+  padding: 1.2rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.sticky-atc.is-visible {
+  transform: translateY(0);
+}
+
+.sticky-atc__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.sticky-atc__title {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.05em;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sticky-atc__price {
+  font-size: 1.4rem;
+  color: #E3000F;
+  font-weight: 600;
+}
+
+.sticky-atc__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-shrink: 0;
+}
+
+.sticky-atc__btn {
+  background: #E3000F;
+  color: #fff;
+  border: none;
+  padding: 1rem 2.4rem;
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.sticky-atc__btn:hover {
+  background: #b5000c;
+}
+
+@media screen and (max-width: 750px) {
+  .sticky-atc {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1.2rem 1.6rem;
+  }
+  .sticky-atc__btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ---- CTA BANNER ---- */
+.cta-banner {
+  background-color: #0a0a0a;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  text-align: center;
+  padding: 8rem 2rem;
+  position: relative;
+}
+
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.cta-banner > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-banner__eyebrow {
+  color: #E3000F;
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+}
+
+.cta-banner__heading {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(4rem, 8vw, 8rem);
+  line-height: 1;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.cta-banner__red-line {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(3.2rem, 6vw, 6.4rem);
+  line-height: 1;
+  color: #E3000F;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.cta-banner__subtext {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
+/* ---- COLLECTION PAGE ---- */
+.collection__hero-description {
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 60rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* filter/sort bar */
+.facets__form,
+.facets-container {
+  border-color: #222;
+}
+
+/* ---- NEWSLETTER SECTION ---- */
+.newsletter__form .field__input {
+  background: #111;
+  border-color: #333;
+  color: #fff;
+}
+
+.newsletter__form .field__input::placeholder {
+  color: #666;
+}
+
+/* ---- FOOTER ---- */
+.footer {
+  background-color: #0a0a0a;
+  border-top: 1px solid #1e1e1e;
+}
+
+.footer__content-top {
+  padding-top: 4rem;
+  padding-bottom: 3rem;
+}
+
+.footer__menu-heading,
+.footer-block__heading {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  letter-spacing: 0.15em;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.footer-block__list a,
+.footer__list a {
+  color: #999;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+.footer-block__list a:hover,
+.footer__list a:hover {
+  color: #E3000F;
+}
+
+.footer__copyright {
+  color: #555;
+  font-size: 1.2rem;
+}
+
+/* WHY section numbered labels */
+.multicolumn-card__order {
+  display: block;
+  color: #E3000F;
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.4rem;
+}
+
+/* ---- GLOBAL MISC ---- */
+.breadcrumb a,
+.breadcrumb span {
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.breadcrumb a:hover {
+  color: #fff;
+}
+
+/* Product accordion tabs */
+.accordion__button {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 1.5rem;
+}
+
+/* scrollbar dark */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: #E3000F; }
+
+/* ---- BILINGUAL CHAPTER CARDS — CSS hover switch ---- */
+.multicolumn-card { cursor: pointer; }
+
+/* English hidden by default */
+.multicolumn-card .lang-en { display: none; }
+
+/* On hover: hide Japanese, show English */
+.multicolumn-card:hover .lang-ja { display: none; }
+.multicolumn-card:hover .lang-en { display: block; }

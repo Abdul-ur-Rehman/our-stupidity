@@ -1,0 +1,124 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "WE STARTED OUR STUPIDITY BECAUSE WE WERE TIRED OF FITTING IN.",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>They said it was stupid to name a brand after a weakness. That's exactly the point.</p><p>Our Stupidity exists for the ones who find themselves in fictional worlds more than real ones — who see Itachi's sacrifice and feel it, who watch Gojo walk into a fight alone and understand why.</p><p>We don't sell merchandise. We create identity. Every drop carries a character, a story, a reason. Wear what you believe before the world approves it.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "zoom",
+        "content_layout": "overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "story_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "intro": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Most original ideas are called stupid before anyone sees their value. The ones that changed culture, built movements, defined generations — they all started with someone who refused to wait for permission.</p><p><strong>We create before approval. We drop before the trend. We wear what we believe before the world accepts it.</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "intro"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "bilingual_section": {
+      "type": "bilingual-chapters",
+      "settings": {
+        "title": "THE JOURNEY",
+        "color_scheme": "scheme-1",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "manifesto": {
+      "type": "rich-text",
+      "blocks": {
+        "tagline": {
+          "type": "text",
+          "settings": {
+            "text": "<p>FOR THE MISFITS. FOR THE DREAMERS. FOR THE ONES WHO REFUSE TO FOLLOW.</p>"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "We believe in originality over approval. Stories over trends. Purpose over popularity.",
+            "heading_size": "h1"
+          }
+        },
+        "subtext": {
+          "type": "text",
+          "settings": {
+            "text": "<p>This is Our Stupidity. And this is just the beginning.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "tagline",
+        "heading",
+        "subtext"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "story_intro",
+    "bilingual_section",
+    "manifesto"
+  ]
+}

@@ -1,0 +1,274 @@
+<style>
+  .countdown-wrapper {
+    background: #0a0a0a;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid #1c1c1c;
+    border-bottom: 1px solid #1c1c1c;
+  }
+
+  /* Subtle red glow */
+  .countdown-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(227, 0, 15, 0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .countdown-inner {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .countdown-eyebrow {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.5em;
+    color: #E3000F;
+    margin: 0 0 0.75rem;
+  }
+
+  .countdown-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5.5rem, 14vw, 11rem);
+    color: #ffffff;
+    line-height: 0.88;
+    margin: 0 0 1.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .countdown-tagline {
+    font-size: 1rem;
+    color: #888;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin: 0 0 3.5rem;
+  }
+
+  .countdown-display {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: nowrap;
+  }
+
+  .countdown-pair {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .countdown-box {
+    background: #0f0f0f;
+    border: 1px solid #222;
+    border-top: 3px solid #E3000F;
+    padding: 1.25rem 1.75rem;
+    min-width: 110px;
+  }
+
+  .countdown-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4.5rem;
+    color: #ffffff;
+    line-height: 1;
+    display: block;
+    letter-spacing: 0.02em;
+  }
+
+  .countdown-unit-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.35em;
+    color: #555;
+  }
+
+  .countdown-sep {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: #E3000F;
+    line-height: 1;
+    margin-top: 1.25rem;
+    animation: blink 1s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.2; }
+  }
+
+  .countdown-date {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.4em;
+    color: #555;
+    margin: 0 0 0.6rem;
+  }
+
+  .countdown-footer-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .countdown-footer-line span {
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #E3000F;
+  }
+
+  .countdown-footer-line::before,
+  .countdown-footer-line::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: #E3000F;
+    opacity: 0.5;
+  }
+
+  .countdown-launched {
+    display: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    letter-spacing: 0.1em;
+    color: #E3000F;
+  }
+
+  @media (max-width: 600px) {
+    .countdown-display {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .countdown-sep--mid {
+      display: none;
+    }
+    .countdown-box {
+      min-width: 80px;
+      padding: 1rem 1.25rem;
+    }
+    .countdown-value {
+      font-size: 3.25rem;
+    }
+    .countdown-sep {
+      font-size: 2.5rem;
+      margin-top: 1rem;
+    }
+    .countdown-tagline {
+      letter-spacing: 0.1em;
+      font-size: 0.85rem;
+    }
+  }
+</style>
+
+<div class="countdown-wrapper">
+  <div class="countdown-inner">
+
+    <p class="countdown-eyebrow">— Drop 001 —</p>
+    <h2 class="countdown-title">UNSEEN</h2>
+    <p class="countdown-tagline">Chronicles: The First Drop &nbsp;·&nbsp; Limited Pieces &nbsp;·&nbsp; No Restocks. Ever.</p>
+
+    <div class="countdown-display" id="countdown-display">
+      <div class="countdown-pair">
+        <div class="countdown-unit">
+          <div class="countdown-box">
+            <span class="countdown-value" id="cd-days">00</span>
+          </div>
+          <span class="countdown-unit-label">Days</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit">
+          <div class="countdown-box">
+            <span class="countdown-value" id="cd-hours">00</span>
+          </div>
+          <span class="countdown-unit-label">Hours</span>
+        </div>
+      </div>
+      <span class="countdown-sep countdown-sep--mid">:</span>
+      <div class="countdown-pair">
+        <div class="countdown-unit">
+          <div class="countdown-box">
+            <span class="countdown-value" id="cd-minutes">00</span>
+          </div>
+          <span class="countdown-unit-label">Mins</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit">
+          <div class="countdown-box">
+            <span class="countdown-value" id="cd-seconds">00</span>
+          </div>
+          <span class="countdown-unit-label">Secs</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="countdown-launched" id="cd-launched">The Drop Is Live.</p>
+
+    <p class="countdown-date">September 15, 2026</p>
+
+    <div class="countdown-footer-line">
+      <span>When it's gone, it's gone</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  var target = new Date('2026-09-15T00:00:00').getTime();
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    var now  = Date.now();
+    var gap  = target - now;
+
+    if (gap <= 0) {
+      document.getElementById('countdown-display').style.display = 'none';
+      document.getElementById('cd-launched').style.display = 'block';
+      return;
+    }
+
+    var d = Math.floor(gap / 86400000);
+    var h = Math.floor((gap % 86400000) / 3600000);
+    var m = Math.floor((gap % 3600000)  / 60000);
+    var s = Math.floor((gap % 60000)    / 1000);
+
+    document.getElementById('cd-days').textContent    = pad(d);
+    document.getElementById('cd-hours').textContent   = pad(h);
+    document.getElementById('cd-minutes').textContent = pad(m);
+    document.getElementById('cd-seconds').textContent = pad(s);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Countdown Timer",
+  "settings": [],
+  "presets": [{ "name": "Countdown Timer" }]
+}
+{% endschema %}
