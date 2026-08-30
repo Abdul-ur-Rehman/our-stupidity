@@ -15,14 +15,14 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "DIFFERENT IS THE POINT.",
+            "heading": "THE WEAK CALLED IT STUPIDITY.",
             "heading_size": "h0"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "Built for those who create before they confirm.",
+            "text": "For the ones shaped by characters, not trends. Who felt Itachi's sacrifice and understood why Gojo walks in alone.",
             "text_style": "body"
           }
         }
@@ -33,14 +33,15 @@
       ],
       "settings": {
         "image": "shopify://shop_images/hero-section.png",
-        "image_overlay_opacity": 30,
-        "image_height": "adapt",
+        "image_2": "shopify://shop_images/hero-section-2.png",
+        "image_overlay_opacity": 20,
+        "image_height": "large",
         "image_behavior": "none",
         "desktop_content_position": "middle-left",
         "desktop_content_alignment": "left",
         "show_text_box": false,
         "color_scheme": "scheme-1",
-        "stack_images_on_mobile": true,
+        "stack_images_on_mobile": false,
         "mobile_content_alignment": "left",
         "show_text_below": false
       }
@@ -85,7 +86,7 @@
         "height": "large",
         "desktop_image_width": "medium",
         "layout": "image_first",
-        "image_behavior": "none",
+        "image_behavior": "ambient",
         "content_layout": "no-overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
@@ -93,7 +94,7 @@
         "section_color_scheme": "",
         "color_scheme": "scheme-1",
         "padding_top": 60,
-        "padding_bottom": 60
+        "padding_bottom": 32
       }
     }
   },
