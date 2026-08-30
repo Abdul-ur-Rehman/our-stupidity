@@ -1,0 +1,548 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    border-top: 1px solid var(--os-border);
+  }
+  #shopify-section-{{ section.id }} .lineup-hd {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 48px var(--os-gutter) 36px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  #shopify-section-{{ section.id }} .lineup-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--os-gold);
+    margin-bottom: 10px;
+  }
+  #shopify-section-{{ section.id }} .lineup-title {
+    font-family: var(--os-font-d);
+    font-size: clamp(28px, 3.5vw, 46px);
+    letter-spacing: 0.06em;
+    line-height: 1;
+    color: var(--os-text);
+    margin: 0;
+  }
+  #shopify-section-{{ section.id }} .lineup-meta {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--os-border);
+    flex-shrink: 0;
+  }
+  #shopify-section-{{ section.id }} .lineup-meta-item {
+    padding: 14px 22px;
+    border-right: 1px solid var(--os-border);
+    text-align: center;
+  }
+  #shopify-section-{{ section.id }} .lineup-meta-item:last-child { border-right: none; }
+  #shopify-section-{{ section.id }} .lineup-meta-val {
+    font-family: var(--os-font-d);
+    font-size: 22px;
+    letter-spacing: 0.06em;
+    color: var(--os-text);
+    display: block;
+    line-height: 1;
+  }
+  #shopify-section-{{ section.id }} .lineup-meta-val.gold { color: var(--os-gold); }
+  #shopify-section-{{ section.id }} .lineup-meta-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--os-text-muted);
+    display: block;
+    margin-top: 5px;
+  }
+  #shopify-section-{{ section.id }} .char-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--os-border);
+    margin: 0 0 2px;
+  }
+  #shopify-section-{{ section.id }} .char-card {
+    background: var(--os-surface);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+    transition: border-color 0.25s ease;
+  }
+  @media (hover: hover) {
+    #shopify-section-{{ section.id }} .char-card:hover { border-color: var(--os-gold); }
+  }
+  #shopify-section-{{ section.id }} .char-art {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+  #shopify-section-{{ section.id }} .char-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #shopify-section-{{ section.id }} .char-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+  #shopify-section-{{ section.id }} .char-number {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-family: var(--os-font-d);
+    font-size: 52px;
+    letter-spacing: 0.04em;
+    color: var(--os-text);
+    opacity: 0.07;
+    line-height: 1;
+    z-index: 2;
+    user-select: none;
+    pointer-events: none;
+  }
+  #shopify-section-{{ section.id }} .char-topline {
+    height: 2px;
+    background: linear-gradient(90deg, var(--os-red), var(--os-gold), var(--os-red));
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+  }
+  #shopify-section-{{ section.id }} .char-info {
+    padding: 20px 22px 24px;
+    border-top: 1px solid var(--os-border);
+    position: relative;
+  }
+  #shopify-section-{{ section.id }} .char-series-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--os-text-muted);
+    margin-bottom: 6px;
+  }
+  #shopify-section-{{ section.id }} .char-name {
+    font-family: var(--os-font-d);
+    font-size: clamp(22px, 2.5vw, 30px);
+    letter-spacing: 0.04em;
+    color: var(--os-text);
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+  #shopify-section-{{ section.id }} .char-jp {
+    font-family: var(--os-font-j);
+    font-size: 13px;
+    color: var(--os-text-muted);
+    opacity: 0.6;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+  #shopify-section-{{ section.id }} .char-rule {
+    width: 100%;
+    height: 1px;
+    background: rgba(201,168,76,0.25);
+    margin-bottom: 16px;
+  }
+  #shopify-section-{{ section.id }} .char-cta {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--os-text-muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease;
+  }
+  #shopify-section-{{ section.id }} .char-cta::after {
+    content: '→';
+    transition: transform 0.2s ease;
+  }
+  @media (hover: hover) {
+    #shopify-section-{{ section.id }} .char-card:hover .char-cta { color: var(--os-gold); }
+    #shopify-section-{{ section.id }} .char-card:hover .char-cta::after { transform: translateX(4px); }
+  }
+  #shopify-section-{{ section.id }} .lineup-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px var(--os-gutter);
+    border-top: 1px solid var(--os-border);
+    background: var(--os-surface);
+  }
+  #shopify-section-{{ section.id }} .lineup-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--os-red);
+    flex-shrink: 0;
+  }
+  #shopify-section-{{ section.id }} .lineup-note-text {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--os-text-muted);
+  }
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} .char-grid {
+      grid-template-columns: 1fr;
+    }
+    #shopify-section-{{ section.id }} .lineup-hd {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    #shopify-section-{{ section.id }} .lineup-meta {
+      width: 100%;
+    }
+    #shopify-section-{{ section.id }} .lineup-meta-item {
+      flex: 1;
+    }
+  }
+{%- endstyle -%}
+
+{%- assign char1 = section.blocks | where: 'type', 'character' | first -%}
+{%- assign char2 = section.blocks | where: 'type', 'character' | last -%}
+{%- assign char_blocks = section.blocks | where: 'type', 'character' -%}
+
+<div class="lineup-hd">
+  <div>
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="lineup-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    {%- endif -%}
+    <h2 class="lineup-title">{{ section.settings.title | escape }}</h2>
+  </div>
+  <div class="lineup-meta" aria-label="Drop stats">
+    <div class="lineup-meta-item">
+      <span class="lineup-meta-val">{{ section.settings.stat_characters }}</span>
+      <span class="lineup-meta-label">Characters</span>
+    </div>
+    <div class="lineup-meta-item">
+      <span class="lineup-meta-val">{{ section.settings.stat_series }}</span>
+      <span class="lineup-meta-label">Series</span>
+    </div>
+    <div class="lineup-meta-item">
+      <span class="lineup-meta-val gold">{{ section.settings.stat_edition }}</span>
+      <span class="lineup-meta-label">Edition</span>
+    </div>
+  </div>
+</div>
+
+<div class="char-grid">
+  {%- for block in char_blocks -%}
+    {%- assign canvas_id = 'char-canvas-' | append: section.id | append: '-' | append: forloop.index -%}
+    {%- assign canvas_type = block.settings.canvas_type -%}
+    <article class="char-card" aria-label="{{ block.settings.name | escape }} — {{ block.settings.series | escape }}" {{ block.shopify_attributes }}>
+      <div class="char-art">
+        {%- if block.settings.image != blank -%}
+          {{- block.settings.image | image_url: width: 600 | image_tag: class: 'char-photo', loading: 'lazy', alt: block.settings.name -}}
+        {%- else -%}
+          <canvas class="char-canvas" id="{{ canvas_id }}" data-type="{{ canvas_type }}" aria-hidden="true"></canvas>
+        {%- endif -%}
+        <div class="char-topline" aria-hidden="true"></div>
+        <span class="char-number" aria-hidden="true">0{{ forloop.index }}</span>
+      </div>
+      <div class="char-info">
+        <p class="char-series-label">{{ block.settings.series | escape }}</p>
+        <h3 class="char-name">{{ block.settings.name | escape }}</h3>
+        {%- if block.settings.name_jp != blank -%}
+          <p class="char-jp">{{ block.settings.name_jp }}</p>
+        {%- endif -%}
+        <div class="char-rule" aria-hidden="true"></div>
+        <a class="char-cta" href="{{ block.settings.cta_link | default: routes.collections_url }}">Shop This Character</a>
+      </div>
+    </article>
+  {%- endfor -%}
+</div>
+
+<div class="lineup-note">
+  <span class="lineup-dot" aria-hidden="true"></span>
+  <span class="lineup-note-text">{{ section.settings.drop_note | escape }}</span>
+</div>
+
+<script>
+  (function() {
+    function drawCharCanvas(id, type) {
+      var canvas = document.getElementById(id);
+      if (!canvas) return;
+      var dpr = window.devicePixelRatio || 1;
+      var rect = canvas.getBoundingClientRect();
+      if (rect.width === 0) return;
+      canvas.width  = rect.width  * dpr;
+      canvas.height = rect.height * dpr;
+      var ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+      var W = rect.width, H = rect.height;
+
+      ctx.fillStyle = '#0a0a0a';
+      ctx.fillRect(0, 0, W, H);
+
+      if (type === 'gojo') {
+        var cx = W * 0.5, cy = H * 0.42;
+        var outer = ctx.createRadialGradient(cx, cy, 0, cx, cy, W * 0.7);
+        outer.addColorStop(0, 'rgba(201,168,76,0.08)');
+        outer.addColorStop(0.5, 'rgba(180,200,255,0.04)');
+        outer.addColorStop(1, 'transparent');
+        ctx.fillStyle = outer;
+        ctx.fillRect(0, 0, W, H);
+        var rings = [0.55, 0.44, 0.34, 0.25, 0.17, 0.1, 0.055];
+        rings.forEach(function(r, i) {
+          ctx.beginPath();
+          ctx.arc(cx, cy, W * r, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(201,168,76,' + (0.04 + i * 0.04) + ')';
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        });
+        var center = ctx.createRadialGradient(cx, cy, 0, cx, cy, W * 0.08);
+        center.addColorStop(0, 'rgba(220,200,160,0.5)');
+        center.addColorStop(0.5, 'rgba(201,168,76,0.2)');
+        center.addColorStop(1, 'transparent');
+        ctx.fillStyle = center;
+        ctx.fillRect(0, 0, W, H);
+        ctx.save();
+        ctx.globalAlpha = 0.015;
+        for (var y = 0; y < H; y += 3) {
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y);
+          ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 0.5; ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      if (type === 'sjw') {
+        var cx = W * 0.5, cy = H * 0.65;
+        for (var i = 0; i < 24; i++) {
+          var x = cx + (Math.random() - 0.5) * W * 0.6;
+          var y0 = H * (0.4 + Math.random() * 0.4);
+          var y1 = H + 20;
+          var alpha = 0.04 + Math.random() * 0.08;
+          ctx.beginPath();
+          ctx.moveTo(x, y0);
+          ctx.lineTo(x + (Math.random() - 0.5) * 20, y1);
+          ctx.strokeStyle = 'rgba(100,80,180,' + alpha + ')';
+          ctx.lineWidth = 0.8 + Math.random();
+          ctx.stroke();
+        }
+        var rise = ctx.createRadialGradient(cx, cy, 0, cx, cy, W * 0.55);
+        rise.addColorStop(0, 'rgba(227,0,15,0.22)');
+        rise.addColorStop(0.4, 'rgba(120,0,40,0.1)');
+        rise.addColorStop(1, 'transparent');
+        ctx.fillStyle = rise;
+        ctx.fillRect(0, 0, W, H);
+        ctx.save();
+        ctx.globalAlpha = 0.6;
+        for (var i = 0; i < 30; i++) {
+          var px = cx + (Math.random() - 0.5) * W * 0.7;
+          var py = H * 0.15 + Math.random() * H * 0.7;
+          var size = 0.5 + Math.random() * 1.5;
+          ctx.beginPath();
+          ctx.arc(px, py, size, 0, Math.PI * 2);
+          ctx.fillStyle = Math.random() > 0.6
+            ? 'rgba(227,0,15,' + (0.3 + Math.random() * 0.5) + ')'
+            : 'rgba(201,168,76,' + (0.2 + Math.random() * 0.4) + ')';
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+
+      if (type === 'itachi') {
+        var cx = W * 0.5, cy = H * 0.4;
+        ctx.beginPath();
+        ctx.arc(cx, cy, W * 0.22, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(227,0,15,0.35)';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(cx, cy, W * 0.14, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(227,0,15,0.2)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        var tomoeAngle = [Math.PI * 0.5, Math.PI * 1.167, Math.PI * 1.833];
+        tomoeAngle.forEach(function(angle) {
+          var tx = cx + Math.cos(angle) * W * 0.105;
+          var ty = cy + Math.sin(angle) * W * 0.105;
+          ctx.beginPath();
+          ctx.arc(tx, ty, W * 0.032, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(227,0,15,0.45)';
+          ctx.fill();
+        });
+        var pupil = ctx.createRadialGradient(cx, cy, 0, cx, cy, W * 0.07);
+        pupil.addColorStop(0, 'rgba(40,0,0,0.9)');
+        pupil.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = pupil;
+        ctx.beginPath();
+        ctx.arc(cx, cy, W * 0.07, 0, Math.PI * 2);
+        ctx.fill();
+        var field = ctx.createRadialGradient(cx, cy, 0, cx, cy, W * 0.5);
+        field.addColorStop(0, 'rgba(227,0,15,0.1)');
+        field.addColorStop(1, 'transparent');
+        ctx.fillStyle = field;
+        ctx.fillRect(0, 0, W, H);
+        ctx.save();
+        ctx.globalAlpha = 0.07;
+        for (var i = 0; i < 8; i++) {
+          var angle = (i / 8) * Math.PI * 2;
+          var x0 = cx + Math.cos(angle) * W * 0.28;
+          var y0 = cy + Math.sin(angle) * W * 0.28;
+          ctx.beginPath();
+          ctx.moveTo(x0, y0);
+          ctx.lineTo(cx + Math.cos(angle + 0.3) * W * 0.5, cy + Math.sin(angle + 0.3) * W * 0.5);
+          ctx.strokeStyle = '#E3000F';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      var btm = ctx.createLinearGradient(0, H * 0.6, 0, H);
+      btm.addColorStop(0, 'transparent');
+      btm.addColorStop(1, 'rgba(10,10,10,0.95)');
+      ctx.fillStyle = btm;
+      ctx.fillRect(0, 0, W, H);
+    }
+
+    function initCanvases() {
+      document.querySelectorAll('#shopify-section-{{ section.id }} .char-canvas').forEach(function(canvas) {
+        drawCharCanvas(canvas.id, canvas.dataset.type);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCanvases);
+    } else {
+      initCanvases();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Character Lineup",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Featured Drop"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "CHRONICLES: UNSEEN — DROP 001"
+    },
+    {
+      "type": "text",
+      "id": "stat_characters",
+      "label": "Stat — Characters",
+      "default": "3"
+    },
+    {
+      "type": "text",
+      "id": "stat_series",
+      "label": "Stat — Series",
+      "default": "3"
+    },
+    {
+      "type": "text",
+      "id": "stat_edition",
+      "label": "Stat — Edition label",
+      "default": "Limited"
+    },
+    {
+      "type": "text",
+      "id": "drop_note",
+      "label": "Drop note text",
+      "default": "No restocks. Once it's gone, it's gone."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "character",
+      "name": "Character Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Character image (overrides canvas art)"
+        },
+        {
+          "type": "select",
+          "id": "canvas_type",
+          "label": "Canvas art style",
+          "options": [
+            { "value": "gojo",   "label": "Gojo — Six Eyes (gold rings)" },
+            { "value": "sjw",    "label": "Sung Jin-Woo — Shadow Monarch (red energy)" },
+            { "value": "itachi", "label": "Itachi — Sharingan (red tomoe)" }
+          ],
+          "default": "gojo"
+        },
+        {
+          "type": "text",
+          "id": "series",
+          "label": "Series name",
+          "default": "Jujutsu Kaisen"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Character name",
+          "default": "GOJO SATORU"
+        },
+        {
+          "type": "text",
+          "id": "name_jp",
+          "label": "Japanese name",
+          "default": "五条 悟"
+        },
+        {
+          "type": "url",
+          "id": "cta_link",
+          "label": "Shop link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Character Lineup",
+      "blocks": [
+        {
+          "type": "character",
+          "settings": {
+            "canvas_type": "gojo",
+            "series": "Jujutsu Kaisen",
+            "name": "GOJO SATORU",
+            "name_jp": "五条 悟"
+          }
+        },
+        {
+          "type": "character",
+          "settings": {
+            "canvas_type": "sjw",
+            "series": "Solo Leveling",
+            "name": "SUNG JIN-WOO",
+            "name_jp": "성진우"
+          }
+        },
+        {
+          "type": "character",
+          "settings": {
+            "canvas_type": "itachi",
+            "series": "Naruto",
+            "name": "ITACHI UCHIHA",
+            "name_jp": "うちは イタチ"
+          }
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6
+}
+{% endschema %}

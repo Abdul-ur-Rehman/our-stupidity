@@ -28,7 +28,7 @@
         "tiktok": "TikTok"
       }
     },
-    "continue_shopping": "Continue shopping",
+    "continue_shopping": "Explore More",
     "pagination": {
       "label": "Pagination",
       "page": "Page {{ number }}",
@@ -60,7 +60,7 @@
   "newsletter": {
     "label": "Email",
     "success": "Thanks for subscribing",
-    "button_label": "Subscribe"
+    "button_label": "Notify Me"
   },
   "accessibility": {
     "skip_to_text": "Skip to content",
@@ -106,10 +106,10 @@
   },
   "products": {
     "product": {
-      "add_to_cart": "Add to cart",
+      "add_to_cart": "Add to Collection",
       "choose_options": "Choose options",
       "choose_product_options": "Choose options for {{ product_name }}",
-      "description": "Description",
+      "description": "Overview",
       "inventory_in_stock": "In stock",
       "inventory_in_stock_show_count": "{{ quantity }} in stock",
       "inventory_low_stock": "Low stock",
@@ -117,7 +117,7 @@
       "inventory_out_of_stock": "Out of stock",
       "inventory_out_of_stock_continue_selling": "In stock",
       "sku": "SKU",
-      "on_sale": "Sale",
+      "on_sale": "Limited Drop",
       "product_variants": "Product variants",
       "media": {
         "gallery_viewer": "Gallery Viewer",
@@ -167,7 +167,7 @@
         "unit_price": "Unit price"
       },
       "share": "Share this product",
-      "sold_out": "Sold out",
+      "sold_out": "Gone.",
       "unavailable": "Unavailable",
       "vendor": "Vendor",
       "value_unavailable": "{{ option_value }} - Unavailable",
@@ -192,7 +192,7 @@
       "from": "From",
       "filter_and_sort": "Filter and sort",
       "filter_by_label": "Filter:",
-      "filter_button": "Filter",
+      "filter_button": "Refine",
       "filters_selected": {
         "one": "{{ count }} selected",
         "other": "{{ count }} selected"
@@ -211,7 +211,7 @@
       },
       "reset": "Reset",
       "sort_button": "Sort",
-      "sort_by_label": "Sort by:",
+      "sort_by_label": "Arrange By:",
       "to": "To",
       "clear_filter": "Remove filter"
     }
@@ -284,14 +284,14 @@
       }
     },
     "cart": {
-      "title": "Your cart",
+      "title": "Your Collection",
       "caption": "Cart items",
       "remove_title": "Remove {{ title }}",
       "estimated_total": "Estimated total",
       "new_estimated_total": "New estimated total",
       "note": "Order special instructions",
-      "checkout": "Check out",
-      "empty": "Your cart is empty",
+      "checkout": "Secure Checkout",
+      "empty": "Nothing stupid yet.",
       "product_disclosure": "Product disclosure",
       "product_disclosures": "Product disclosures",
       "cart_error": "There was an error while updating your cart. Please try again.",

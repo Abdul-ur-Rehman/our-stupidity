@@ -5,7 +5,7 @@
 <style>
   .os-footer {
     background: #0a0a0a;
-    border-top: 3px solid #E3000F;
+    border-top: 1px solid #C9A84C;
     padding: 80px 0 0;
     position: relative;
   }
@@ -66,7 +66,7 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1rem;
     letter-spacing: 0.3em;
-    color: #E3000F;
+    color: #C9A84C;
     margin: 0 0 1.5rem;
   }
 
@@ -99,11 +99,20 @@
     gap: 1.5rem;
   }
 
+  .os-footer__tagline-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.85rem;
+    color: #C9A84C;
+    opacity: 0.7;
+    margin-top: 0.75rem;
+    display: block;
+  }
+
   .os-footer__social-label {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1rem;
     letter-spacing: 0.3em;
-    color: #E3000F;
+    color: #C9A84C;
   }
 
   .os-footer__social-icons {
@@ -185,6 +194,14 @@
 
   .os-footer__policies a:hover { color: #999; }
 
+  .os-footer__kanji {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem;
+    color: #C9A84C;
+    opacity: 0.6;
+    letter-spacing: 0.1em;
+  }
+
   /* ── Payment icons ── */
   .os-footer__payment {
     display: flex;
@@ -252,8 +269,34 @@
       <div class="os-footer__brand">
         <a href="{{ routes.root_url }}" class="os-footer__logo">OUR <span>STUPIDITY</span></a>
         <p class="os-footer__tagline">Born from the stories<br>that changed you.</p>
+        <span class="os-footer__tagline-jp">独自性を求める者たちへ</span>
       </div>
 
+      <!-- Nav -->
+      <nav class="os-footer__nav" aria-label="Footer navigation">
+        <div class="os-footer__nav-group">
+          <h3>Shop</h3>
+          <ul>
+            <li><a href="{{ routes.all_products_collection_url }}">All Products</a></li>
+            <li><a href="{{ routes.collections_url }}">Collections</a></li>
+            <li><a href="{{ routes.root_url }}pages/about">About</a></li>
+            <li><a href="{{ routes.root_url }}pages/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="os-footer__nav-group">
+          <h3>Customer</h3>
+          <ul>
+            <li><a href="{{ routes.root_url }}pages/shipping">Shipping</a></li>
+            <li><a href="{{ routes.root_url }}pages/returns">Returns</a></li>
+            <li><a href="{{ routes.root_url }}pages/faq">FAQ</a></li>
+            {%- for policy in shop.policies -%}
+              {%- if policy != blank -%}
+                <li><a href="{{ policy.url }}">{{ policy.title | escape }}</a></li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+      </nav>
 
       <!-- Social -->
       <div class="os-footer__social">
@@ -290,6 +333,8 @@
       &copy; {{ 'now' | date: '%Y' }} <a href="{{ routes.root_url }}">Our Stupidity</a>
     </p>
 
+    <span class="os-footer__kanji" aria-hidden="true">愚か</span>
+
     {%- if section.settings.payment_enable -%}
       <div class="os-footer__payment">
         {%- for type in shop.enabled_payment_types -%}
@@ -297,14 +342,6 @@
         {%- endfor -%}
       </div>
     {%- endif -%}
-
-    <ul class="os-footer__policies">
-      {%- for policy in shop.policies -%}
-        {%- if policy != blank -%}
-          <li><a href="{{ policy.url }}">{{ policy.title | escape }}</a></li>
-        {%- endif -%}
-      {%- endfor -%}
-    </ul>
   </div>
 
 </footer>

@@ -1,35 +1,38 @@
 <style>
   .os-announcement-bar {
     background: #E3000F;
+    height: 38px;
     overflow: hidden;
-    padding: 10px 0;
+    display: flex;
+    align-items: center;
     position: relative;
   }
 
-  /* Fade edges for a polished look */
   .os-announcement-bar::before,
   .os-announcement-bar::after {
     content: '';
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 100px;
+    width: 80px;
     z-index: 2;
     pointer-events: none;
   }
   .os-announcement-bar::before {
     left: 0;
-    background: linear-gradient(to right, #E3000F 30%, transparent);
+    background: linear-gradient(90deg, #E3000F, transparent);
   }
   .os-announcement-bar::after {
     right: 0;
-    background: linear-gradient(to left, #E3000F 30%, transparent);
+    background: linear-gradient(-90deg, #E3000F, transparent);
   }
 
   .os-marquee-track {
     display: flex;
     width: max-content;
     animation: os-marquee 35s linear infinite;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .os-marquee-track:hover {
@@ -37,61 +40,60 @@
   }
 
   .os-marquee-item {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 0.82rem;
-    letter-spacing: 0.25em;
-    color: #ffffff;
-    white-space: nowrap;
     display: inline-flex;
     align-items: center;
+    gap: 20px;
+    padding: 0 28px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    color: #ffffff;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 
   .os-marquee-sep {
-    display: inline-block;
-    margin: 0 2rem;
-    color: rgba(255, 255, 255, 0.45);
-    font-size: 0.6rem;
+    color: #C9A84C;
+    font-size: 9px;
+    line-height: 1;
+    flex-shrink: 0;
   }
 
   @keyframes os-marquee {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .os-marquee-track { animation: none; }
   }
 </style>
 
-<div class="os-announcement-bar">
-  <div class="os-marquee-track">
+<div class="os-announcement-bar" role="marquee" aria-label="Announcements">
+  <div class="os-marquee-track" aria-hidden="true">
 
     <!-- Copy 1 -->
+    <span class="os-marquee-item">ANIME × STREETWEAR</span>
+    <span class="os-marquee-sep">✦</span>
     <span class="os-marquee-item">DROP 001 — CHRONICLES: UNSEEN</span>
     <span class="os-marquee-sep">✦</span>
     <span class="os-marquee-item">LAUNCHING SEPTEMBER 15, 2026</span>
     <span class="os-marquee-sep">✦</span>
     <span class="os-marquee-item">LIMITED PIECES — NO RESTOCKS EVER</span>
     <span class="os-marquee-sep">✦</span>
-    <span class="os-marquee-item">WHEN IT'S GONE, IT'S GONE</span>
-    <span class="os-marquee-sep">✦</span>
-    <span class="os-marquee-item">OURSTUPIDITY.COM</span>
-    <span class="os-marquee-sep">✦</span>
-    <span class="os-marquee-item">THE WAIT IS ALMOST OVER</span>
-    <span class="os-marquee-sep">✦</span>
-    <span class="os-marquee-item">ANIME. STREETWEAR. IDENTITY.</span>
+    <span class="os-marquee-item">OUR STUPIDITY × ANIME × STREETWEAR</span>
     <span class="os-marquee-sep">✦</span>
 
     <!-- Copy 2 — seamless loop -->
+    <span class="os-marquee-item">ANIME × STREETWEAR</span>
+    <span class="os-marquee-sep">✦</span>
     <span class="os-marquee-item">DROP 001 — CHRONICLES: UNSEEN</span>
     <span class="os-marquee-sep">✦</span>
     <span class="os-marquee-item">LAUNCHING SEPTEMBER 15, 2026</span>
     <span class="os-marquee-sep">✦</span>
     <span class="os-marquee-item">LIMITED PIECES — NO RESTOCKS EVER</span>
     <span class="os-marquee-sep">✦</span>
-    <span class="os-marquee-item">WHEN IT'S GONE, IT'S GONE</span>
-    <span class="os-marquee-sep">✦</span>
-    <span class="os-marquee-item">OURSTUPIDITY.COM</span>
-    <span class="os-marquee-sep">✦</span>
-    <span class="os-marquee-item">THE WAIT IS ALMOST OVER</span>
-    <span class="os-marquee-sep">✦</span>
-    <span class="os-marquee-item">ANIME. STREETWEAR. IDENTITY.</span>
+    <span class="os-marquee-item">OUR STUPIDITY × ANIME × STREETWEAR</span>
     <span class="os-marquee-sep">✦</span>
 
   </div>

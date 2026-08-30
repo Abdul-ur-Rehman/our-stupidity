@@ -25,11 +25,23 @@
             "text": "For the ones shaped by characters, not trends. Who felt Itachi's sacrifice and understood why Gojo walks in alone.",
             "text_style": "body"
           }
+        },
+        "cta_primary": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop The Drop",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": false,
+            "button_label_2": "Explore Collections",
+            "button_link_2": "shopify://collections",
+            "button_style_secondary_2": true
+          }
         }
       },
       "block_order": [
         "heading",
-        "text"
+        "text",
+        "cta_primary"
       ],
       "settings": {
         "image": "shopify://shop_images/hero-section.png",
@@ -43,12 +55,137 @@
         "color_scheme": "scheme-1",
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "left",
-        "show_text_below": false
+        "show_text_below": false,
+        "show_ghost_text": true,
+        "ghost_text": "異なることが本質"
       }
+    },
+    "truck_divider": {
+      "type": "truck-divider",
+      "settings": {}
     },
     "countdown": {
       "type": "countdown-timer",
       "settings": {}
+    },
+    "brand_statement": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "We don't sell merchandise. We build identity.",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": ["heading"],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "CURRENT CHRONICLE",
+        "description": "<p>Inspired by iconic anime characters.</p>",
+        "show_description": true,
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "columns_desktop": 3,
+        "columns_mobile": "2",
+        "show_view_all": true,
+        "view_all_style": "link",
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "trust_badges": {
+      "type": "trust-badges",
+      "blocks": {
+        "badge1": {
+          "type": "badge",
+          "settings": {
+            "icon": "<svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/></svg>",
+            "title": "Premium Quality",
+            "text": "300GSM heavyweight cotton. Built to outlast trends."
+          }
+        },
+        "badge2": {
+          "type": "badge",
+          "settings": {
+            "icon": "<svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/><polyline points=\"9 22 9 12 15 12 15 22\"/></svg>",
+            "title": "Easy Returns",
+            "text": "30-day returns, no questions asked."
+          }
+        },
+        "badge3": {
+          "type": "badge",
+          "settings": {
+            "icon": "<svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"><rect x=\"1\" y=\"4\" width=\"22\" height=\"16\" rx=\"2\" ry=\"2\"/><line x1=\"1\" y1=\"10\" x2=\"23\" y2=\"10\"/></svg>",
+            "title": "Secure Payment",
+            "text": "Encrypted checkout. Every transaction protected."
+          }
+        },
+        "badge4": {
+          "type": "badge",
+          "settings": {
+            "icon": "<svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"><polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"/></svg>",
+            "title": "Limited Drops",
+            "text": "Every piece is scarce. No reprints, ever."
+          }
+        }
+      },
+      "block_order": ["badge1", "badge2", "badge3", "badge4"],
+      "settings": {}
+    },
+    "character_lineup": {
+      "type": "character-lineup",
+      "blocks": {
+        "char1": {
+          "type": "character",
+          "settings": {
+            "canvas_type": "gojo",
+            "series": "Jujutsu Kaisen",
+            "name": "GOJO SATORU",
+            "name_jp": "五条 悟"
+          }
+        },
+        "char2": {
+          "type": "character",
+          "settings": {
+            "canvas_type": "sjw",
+            "series": "Solo Leveling",
+            "name": "SUNG JIN-WOO",
+            "name_jp": "성진우"
+          }
+        },
+        "char3": {
+          "type": "character",
+          "settings": {
+            "canvas_type": "itachi",
+            "series": "Naruto",
+            "name": "ITACHI UCHIHA",
+            "name_jp": "うちは イタチ"
+          }
+        }
+      },
+      "block_order": ["char1", "char2", "char3"],
+      "settings": {
+        "eyebrow": "Featured Drop",
+        "title": "CHRONICLES: UNSEEN — DROP 001",
+        "stat_characters": "3",
+        "stat_series": "3",
+        "stat_edition": "Limited",
+        "drop_note": "No restocks. Once it's gone, it's gone."
+      }
     },
     "story_teaser": {
       "type": "image-with-text",
@@ -96,11 +233,40 @@
         "padding_top": 60,
         "padding_bottom": 32
       }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Don't Miss The Next Chronicle.",
+            "heading_scale": 100
+          }
+        },
+        "email_form": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": ["heading", "email_form"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
     }
   },
   "order": [
     "image_banner",
+    "truck_divider",
     "countdown",
-    "story_teaser"
+    "brand_statement",
+    "featured_collection",
+    "character_lineup",
+    "trust_badges",
+    "story_teaser",
+    "newsletter"
   ]
 }

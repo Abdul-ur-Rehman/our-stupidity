@@ -79,6 +79,11 @@
   id="Banner-{{ section.id }}"
   class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
 >
+  {%- if section.settings.show_ghost_text -%}
+    <div class="banner__ghost-text" aria-hidden="true">
+      <span>{{ section.settings.ghost_text }}</span>
+    </div>
+  {%- endif -%}
   {%- if section.settings.image != blank -%}
     <div class="banner__media media banner__media--desktop-only{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
       {%- liquid
@@ -144,12 +149,16 @@
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'heading' -%}
+            {%- if block.settings.eyebrow_text != blank -%}
+              <p class="banner__eyebrow" {{ block.shopify_attributes }}>{{ block.settings.eyebrow_text | escape }}</p>
+            {%- endif -%}
             <h2
               class="banner__heading inline-richtext {{ block.settings.heading_size }}"
               {{ block.shopify_attributes }}
             >
               {{ block.settings.heading }}
             </h2>
+            <div class="banner__rule" aria-hidden="true"></div>
           {%- when 'text' -%}
             <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
               <p>{{ block.settings.text }}</p>
@@ -382,6 +391,22 @@
       "id": "show_text_below",
       "default": true,
       "label": "t:sections.image-banner.settings.show_text_below.label"
+    },
+    {
+      "type": "header",
+      "content": "Japanese Ghost Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_ghost_text",
+      "default": true,
+      "label": "Show ghost text"
+    },
+    {
+      "type": "text",
+      "id": "ghost_text",
+      "default": "異なることが本質",
+      "label": "Ghost text (Japanese)"
     }
   ],
   "blocks": [
@@ -390,6 +415,12 @@
       "name": "t:sections.image-banner.blocks.heading.name",
       "limit": 1,
       "settings": [
+        {
+          "type": "text",
+          "id": "eyebrow_text",
+          "label": "Eyebrow text",
+          "info": "Small label shown above the heading in gold"
+        },
         {
           "type": "inline_richtext",
           "id": "heading",
