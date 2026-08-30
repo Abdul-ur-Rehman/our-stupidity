@@ -720,6 +720,27 @@ h1, h2, h3, h4, h5, h6,
 ::-webkit-scrollbar-thumb { background: #333; border-radius: 0; }
 ::-webkit-scrollbar-thumb:hover { background: #E3000F; }
 
+/* ---- STORY TEASER (homepage) ---- */
+[id*="__story_teaser"] .button {
+  padding: 1.15rem 2.6rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.28em;
+  border-radius: 0;
+  border-width: 2px;
+  background-color: #ffffff;
+  color: #0a0a0a;
+  border-color: #ffffff;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+[id*="__story_teaser"] .button:hover {
+  background-color: #E3000F;
+  color: #ffffff;
+  border-color: #E3000F;
+  box-shadow: 0 0 24px rgba(227, 0, 15, 0.5);
+}
+
 /* ---- BILINGUAL CHAPTER CARDS — CSS hover switch ---- */
 .multicolumn-card { cursor: pointer; }
 
