@@ -1,46 +1,100 @@
+{%- liquid
+  assign lc   = section.settings.line_color
+  assign lc_r = lc | color_extract: 'red'
+  assign lc_g = lc | color_extract: 'green'
+  assign lc_b = lc | color_extract: 'blue'
+  assign op   = section.settings.pattern_opacity | divided_by: 100.0 | round: 2
+  assign ht   = section.settings.divider_height
+-%}
+
 {%- style -%}
-  #shopify-section-{{ section.id }} .divider-truck {
-    height: 52px;
+  #shopify-section-{{ section.id }} {
+    display: block;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 0;
+  }
+  #shopify-section-{{ section.id }} .td-wrap {
+    height: {{ ht }}px;
     position: relative;
     overflow: hidden;
+    background: #0d0d0d;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
-  #shopify-section-{{ section.id }} .divider-truck-bg {
+  #shopify-section-{{ section.id }} .td-pattern {
     position: absolute;
     inset: 0;
-    background:
-      repeating-linear-gradient(45deg, rgba(227,0,15,0.07) 0px, rgba(227,0,15,0.07) 1px, transparent 1px, transparent 12px),
-      repeating-linear-gradient(-45deg, rgba(227,0,15,0.07) 0px, rgba(227,0,15,0.07) 1px, transparent 1px, transparent 12px);
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        rgba({{ lc_r }}, {{ lc_g }}, {{ lc_b }}, {{ op }}) 0px,
+        rgba({{ lc_r }}, {{ lc_g }}, {{ lc_b }}, {{ op }}) 2px,
+        transparent 2px,
+        transparent 22px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        rgba({{ lc_r }}, {{ lc_g }}, {{ lc_b }}, {{ op }}) 0px,
+        rgba({{ lc_r }}, {{ lc_g }}, {{ lc_b }}, {{ op }}) 2px,
+        transparent 2px,
+        transparent 22px
+      );
   }
-  #shopify-section-{{ section.id }} .divider-truck-line {
+  #shopify-section-{{ section.id }} .td-line {
     position: absolute;
+    left: 0;
+    right: 0;
     top: 50%;
-    left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, var(--os-red) 20%, var(--os-gold) 50%, var(--os-red) 80%, transparent 100%);
+    height: 2px;
+    transform: translateY(-50%);
+    background: linear-gradient(90deg,
+      {{ lc }} 0%,
+      {{ lc }} 35%,
+      #C9A84C  50%,
+      {{ lc }} 65%,
+      {{ lc }} 100%
+    );
   }
-  #shopify-section-{{ section.id }} .divider-truck-border-t,
-  #shopify-section-{{ section.id }} .divider-truck-border-b {
-    position: absolute;
-    left: 0; right: 0;
-    height: 1px;
-    background: var(--os-border);
-  }
-  #shopify-section-{{ section.id }} .divider-truck-border-t { top: 0; }
-  #shopify-section-{{ section.id }} .divider-truck-border-b { bottom: 0; }
 {%- endstyle -%}
 
-<div class="divider-truck" aria-hidden="true">
-  <div class="divider-truck-bg"></div>
-  <div class="divider-truck-line"></div>
-  <div class="divider-truck-border-t"></div>
-  <div class="divider-truck-border-b"></div>
+<div class="td-wrap" aria-hidden="true">
+  <div class="td-pattern"></div>
+  <div class="td-line"></div>
 </div>
 
 {% schema %}
 {
   "name": "Truck Art Divider",
   "tag": "div",
-  "settings": [],
+  "settings": [
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Line color",
+      "default": "#E3000F"
+    },
+    {
+      "type": "range",
+      "id": "pattern_opacity",
+      "label": "Pattern opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 50,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "divider_height",
+      "label": "Height",
+      "min": 40,
+      "max": 160,
+      "step": 4,
+      "default": 80,
+      "unit": "px"
+    }
+  ],
   "presets": [
     {
       "name": "Truck Art Divider"

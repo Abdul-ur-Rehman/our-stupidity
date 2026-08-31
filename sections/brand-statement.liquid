@@ -1,0 +1,124 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  #shopify-section-{{ section.id }} .os-bs {
+    background: #080808;
+    padding: {{ section.settings.padding_vertical }}px 24px;
+    text-align: center;
+    border-top: 1px solid rgba(201, 168, 76, 0.28);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.28);
+    position: relative;
+  }
+  #shopify-section-{{ section.id }} .os-bs__eyebrow {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #C9A84C;
+    margin: 0 0 28px;
+  }
+  #shopify-section-{{ section.id }} .os-bs__headline {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: clamp(56px, 7.5vw, 106px);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    color: #F5F0E8;
+    text-transform: uppercase;
+    margin: 0 0 36px;
+  }
+  #shopify-section-{{ section.id }} .os-bs__headline-accent {
+    color: #C9A84C;
+  }
+  #shopify-section-{{ section.id }} .os-bs__body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.52);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .os-bs {
+      padding: 72px 20px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="os-bs">
+  {%- if section.settings.eyebrow != blank -%}
+    <p class="os-bs__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+  {%- endif -%}
+
+  <h2 class="os-bs__headline">
+    {%- if section.settings.headline_1 != blank -%}
+      {{ section.settings.headline_1 | escape }}<br>
+    {%- endif -%}
+    {%- if section.settings.headline_2 != blank -%}
+      {{ section.settings.headline_2 | escape }}
+    {%- endif -%}
+    {%- if section.settings.headline_accent != blank -%}
+      <span class="os-bs__headline-accent">{{ section.settings.headline_accent | escape }}</span>
+    {%- endif -%}
+  </h2>
+
+  {%- if section.settings.body_text != blank -%}
+    <p class="os-bs__body">{{ section.settings.body_text | escape }}</p>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Brand Statement",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "OUR STUPIDITY"
+    },
+    {
+      "type": "text",
+      "id": "headline_1",
+      "label": "Headline line 1",
+      "default": "WE'RE NOT HERE"
+    },
+    {
+      "type": "text",
+      "id": "headline_2",
+      "label": "Headline line 2 (white part)",
+      "default": "TO FIT "
+    },
+    {
+      "type": "text",
+      "id": "headline_accent",
+      "label": "Headline accent (gold)",
+      "default": "IN."
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "Anime-inspired apparel for the ones who live differently. Each drop is a chapter. Each piece is a statement. Wear your story."
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "label": "Vertical padding",
+      "min": 40,
+      "max": 160,
+      "step": 8,
+      "default": 96,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Statement"
+    }
+  ]
+}
+{% endschema %}

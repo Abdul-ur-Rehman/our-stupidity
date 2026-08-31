@@ -1052,54 +1052,58 @@ shopify-account.header__icon {
 }
 
 /* ---- CART DRAWER ---- */
-cart-drawer {
-  --cart-drawer-width: min(440px, 100vw);
+
+/* Fix: Dawn's .drawer uses rgba(--color-foreground, 0.5) as backdrop — white in dark themes */
+cart-drawer.drawer {
+  background-color: rgba(0, 0, 0, 0.65);
 }
 
-.cart-drawer {
-  background: var(--os-surface);
-  border-left: 2px solid var(--os-red);
-  width: var(--cart-drawer-width);
-  max-width: 100vw;
+/* Sliding panel: dark bg + red accent border */
+.drawer__inner {
+  background: var(--os-surface) !important;
+  border-left: 2px solid var(--os-red) !important;
 }
 
-.cart-drawer__header {
+/* Header — Dawn class is drawer__header, not cart-drawer__header */
+.drawer__header {
   border-bottom: 1px solid var(--os-border);
-  padding: 2.4rem;
 }
 
-.cart-drawer__heading {
+.drawer__heading {
   font-family: var(--os-font-d);
   font-size: 2.4rem;
   letter-spacing: 0.1em;
   color: var(--os-text);
 }
 
-.cart-drawer__close {
+.drawer__close {
   color: var(--os-text-muted);
   transition: color 0.2s;
 }
 
-.cart-drawer__close:hover {
+.drawer__close:hover {
   color: var(--os-red);
 }
 
-.cart-drawer__footer {
+/* Footer */
+.drawer__footer {
   border-top: 1px solid var(--os-border);
 }
 
-.cart-drawer__footer .totals__total-value {
+.drawer__footer .totals__total-value {
   font-family: var(--os-font-d);
   font-size: 2rem;
   color: var(--os-text);
 }
 
+/* Checkout button */
 .cart-drawer .cart__checkout-button {
   background: var(--os-red);
   border-color: var(--os-red);
   color: #fff;
   font-family: var(--os-font-d);
   letter-spacing: 0.15em;
+  border-radius: 0;
   transition: background 0.2s;
 }
 
@@ -1117,23 +1121,6 @@ cart-drawer {
 
 .cart-item__price-wrapper .price {
   color: var(--os-red);
-}
-
-/* Drawer overlay */
-.cart-drawer-overlay {
-  background: rgba(0, 0, 0, 0.6);
-}
-
-/* Slide-in animation */
-@media (prefers-reduced-motion: no-preference) {
-  cart-drawer:not([open]) .cart-drawer {
-    transform: translateX(100%);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  cart-drawer[open] .cart-drawer {
-    transform: translateX(0);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
 }
 
 /* ---- CART EMPTY STATE ---- */
