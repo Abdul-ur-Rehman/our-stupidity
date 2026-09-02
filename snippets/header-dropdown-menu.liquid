@@ -1,6 +1,6 @@
 {%- liquid
   assign shop_active = false
-  if request.page_type == 'index' or request.page_type == 'collection' or request.page_type == 'product'
+  if request.page_type == 'index'
     assign shop_active = true
   endif
   assign about_url = pages['brand-story'].url | default: '/pages/brand-story'
@@ -11,7 +11,8 @@
   <ul class="list-menu list-menu--inline os-header-menu" role="list">
     <li>
       <a
-        href="{{ routes.all_products_collection_url }}"
+        href="{{ routes.root_url }}#shop-collection"
+        data-shop-collection-link
         class="header__menu-item list-menu__item link link--text focus-inset{% if shop_active %} header__menu-item--active{% endif %}"
         {% if shop_active %}aria-current="page"{% endif %}
       >

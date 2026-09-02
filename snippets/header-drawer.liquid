@@ -12,7 +12,7 @@
   assign about_active = false
   assign contact_active = false
 
-  if request.page_type == 'index' or request.page_type == 'collection' or request.page_type == 'product'
+  if request.page_type == 'index'
     assign shop_active = true
   elsif request.page_type == 'page' and page.handle == 'brand-story'
     assign about_active = true
@@ -43,7 +43,8 @@
             <ul class="menu-drawer__menu list-menu os-mobile-menu__primary" role="list">
               <li>
                 <a
-                  href="{{ routes.all_products_collection_url }}"
+                  href="{{ routes.root_url }}#shop-collection"
+                  data-shop-collection-link
                   class="menu-drawer__menu-item list-menu__item link link--text focus-inset os-mobile-menu__link{% if shop_active %} os-mobile-menu__link--active{% endif %}"
                   {% if shop_active %}aria-current="page"{% endif %}
                 >

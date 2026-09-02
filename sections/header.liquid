@@ -477,6 +477,34 @@
   );
 
   document.addEventListener('click', (event) => {
+    const shopCollectionTrigger = event.target.closest('[data-shop-collection-link]');
+    const shopCollection = document.querySelector('#shop-collection');
+
+    if (shopCollectionTrigger && shopCollection) {
+      event.preventDefault();
+
+      const drawerDetails = shopCollectionTrigger.closest('header-drawer')?.querySelector('details');
+      const scrollToCollection = () => {
+        shopCollection.scrollIntoView({
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+          block: 'start',
+        });
+
+        if (window.location.hash !== '#shop-collection') {
+          window.history.pushState(null, '', '#shop-collection');
+        }
+      };
+
+      if (drawerDetails?.open) {
+        drawerDetails.querySelector(':scope > summary')?.click();
+        window.setTimeout(scrollToCollection, 250);
+      } else {
+        scrollToCollection();
+      }
+
+      return;
+    }
+
     const mobileSearchTrigger = event.target.closest('[data-os-mobile-search]');
     if (!mobileSearchTrigger) return;
 

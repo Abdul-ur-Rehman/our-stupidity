@@ -36,6 +36,10 @@
     --os-featured-card-image-fit: {{ section.settings.card_image_fit }};
   }
 
+  #shop-collection {
+    scroll-margin-top: calc(var(--header-height, 0px) + 12px);
+  }
+
   #collection-{{ section.id }} .card__inner.ratio {
     height: var(--os-featured-card-media-height);
   }
@@ -92,6 +96,7 @@
 
 <div
   class="featured-collection color-{{ section.settings.color_scheme }} isolate gradient animate-fade-up"
+  {% if request.page_type == 'index' %}id="shop-collection"{% endif %}
 >
   <div
     class="collection{% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %} section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}"
