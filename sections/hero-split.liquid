@@ -16,14 +16,19 @@
     padding: 80px var(--os-gutter);
     background: linear-gradient(90deg, #080808 65%, transparent 100%);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     z-index: 4;
+  }
+
+  .os-hero__content > :not(.os-hero__watermark) {
+    position: relative;
+    z-index: 1;
   }
 
   .os-hero__watermark {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 100%;
     transform: translate(-50%, -50%);
     font-family: 'Noto Serif JP', serif;
     font-size: clamp(80px, 14vw, 200px);
@@ -193,6 +198,13 @@
       z-index: 3;
     }
 
+    .os-hero__watermark {
+      left: 50%;
+      top: 44%;
+      font-size: clamp(72px, 24vw, 110px);
+      opacity: 0.04;
+    }
+
     .os-hero__media {
       position: absolute;
       inset: 0;
@@ -238,6 +250,8 @@
 -%}
 <section class="os-hero" style="--hero-min-height: {{ hero_min_height }};">
   <div class="os-hero__content">
+    <span class="os-hero__watermark" aria-hidden="true">我らの愚かさ</span>
+
     {%- if section.settings.eyebrow != blank -%}
       <p class="os-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>
     {%- endif -%}
@@ -329,7 +343,6 @@
     {%- endif -%}
   </div>
 
-  <span class="os-hero__watermark" aria-hidden="true">我らの愚かさ</span>
 </section>
 
 {% schema %}
