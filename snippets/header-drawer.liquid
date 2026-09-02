@@ -8,6 +8,17 @@
 {%- liquid
   assign about_url = pages['brand-story'].url | default: '/pages/brand-story'
   assign contact_url = pages.contact.url | default: '/pages/contact'
+  assign shop_active = false
+  assign about_active = false
+  assign contact_active = false
+
+  if request.page_type == 'index' or request.page_type == 'collection' or request.page_type == 'product'
+    assign shop_active = true
+  elsif request.page_type == 'page' and page.handle == 'brand-story'
+    assign about_active = true
+  elsif request.page_type == 'page' and page.handle == 'contact'
+    assign contact_active = true
+  endif
 -%}
 
 <header-drawer data-breakpoint="{% if menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
@@ -24,39 +35,66 @@
     <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ menu_color_scheme }}">
       <div class="menu-drawer__inner-container">
         <div class="menu-drawer__navigation-container">
-          <nav class="menu-drawer__navigation" aria-label="Mobile navigation">
-            <ul class="menu-drawer__menu list-menu" role="list">
+          <nav class="menu-drawer__navigation os-mobile-menu__navigation" aria-label="Mobile navigation">
+            <div class="os-mobile-menu__heading" aria-hidden="true">
+              <span>Navigation</span>
+              <span>ナビゲーション</span>
+            </div>
+            <ul class="menu-drawer__menu list-menu os-mobile-menu__primary" role="list">
               <li>
-                <a href="{{ routes.all_products_collection_url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">
-                  Shop
+                <a
+                  href="{{ routes.all_products_collection_url }}"
+                  class="menu-drawer__menu-item list-menu__item link link--text focus-inset os-mobile-menu__link{% if shop_active %} os-mobile-menu__link--active{% endif %}"
+                  {% if shop_active %}aria-current="page"{% endif %}
+                >
+                  <span class="os-mobile-menu__label">Shop</span>
+                  <span class="os-mobile-menu__dot" aria-hidden="true"></span>
                 </a>
               </li>
               <li>
-                <a href="{{ about_url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">
-                  About
+                <a
+                  href="{{ about_url }}"
+                  class="menu-drawer__menu-item list-menu__item link link--text focus-inset os-mobile-menu__link{% if about_active %} os-mobile-menu__link--active{% endif %}"
+                  {% if about_active %}aria-current="page"{% endif %}
+                >
+                  <span class="os-mobile-menu__label">About</span>
+                  <span class="os-mobile-menu__dot" aria-hidden="true"></span>
                 </a>
               </li>
               <li>
-                <a href="{{ contact_url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">
-                  Contact
+                <a
+                  href="{{ contact_url }}"
+                  class="menu-drawer__menu-item list-menu__item link link--text focus-inset os-mobile-menu__link{% if contact_active %} os-mobile-menu__link--active{% endif %}"
+                  {% if contact_active %}aria-current="page"{% endif %}
+                >
+                  <span class="os-mobile-menu__label">Contact</span>
+                  <span class="os-mobile-menu__dot" aria-hidden="true"></span>
                 </a>
               </li>
-              <li class="os-mobile-menu__utility os-mobile-menu__utility--first">
-                <a href="{{ routes.search_url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">
-                  <span class="svg-wrapper">{{- 'icon-search.svg' | inline_asset_content -}}</span>
-                  Search
-                </a>
-              </li>
-              {%- if shop.customer_accounts_enabled -%}
-                <li class="os-mobile-menu__utility">
-                  <a href="{{ routes.account_url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">
-                    <span class="svg-wrapper">{{- 'icon-account.svg' | inline_asset_content -}}</span>
-                    Profile
-                  </a>
-                </li>
-              {%- endif -%}
             </ul>
+
+            <div class="os-mobile-menu__actions">
+              <button type="button" class="os-mobile-menu__action focus-inset" data-os-mobile-search>
+                <span class="svg-wrapper">{{- 'icon-search.svg' | inline_asset_content -}}</span>
+                <span>Search</span>
+              </button>
+              {%- if shop.customer_accounts_enabled -%}
+                <a href="{{ routes.account_url }}" class="os-mobile-menu__action link focus-inset">
+                  <span class="svg-wrapper">{{- 'icon-account.svg' | inline_asset_content -}}</span>
+                  <span>Profile</span>
+                </a>
+              {%- endif -%}
+            </div>
           </nav>
+
+          <div class="menu-drawer__utility-links os-mobile-menu__footer">
+            <div class="os-mobile-menu__footer-heading">
+              <span>Follow Our Stupidity</span>
+              <span aria-hidden="true">Stay Unseen</span>
+            </div>
+            {% render 'social-icons', class: 'os-mobile-menu__socials' %}
+            <p class="os-mobile-menu__copyright">© {{ 'now' | date: '%Y' }} OUR.STUPIDITY</p>
+          </div>
         </div>
       </div>
     </div>

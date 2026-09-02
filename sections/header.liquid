@@ -476,6 +476,22 @@
     true
   );
 
+  document.addEventListener('click', (event) => {
+    const mobileSearchTrigger = event.target.closest('[data-os-mobile-search]');
+    if (!mobileSearchTrigger) return;
+
+    const drawerDetails = mobileSearchTrigger.closest('header-drawer')?.querySelector('details');
+    const searchToggle = document.querySelector('.header__search summary');
+    if (!searchToggle) return;
+
+    if (drawerDetails?.open) drawerDetails.querySelector(':scope > summary')?.click();
+
+    window.setTimeout(() => {
+      searchToggle.click();
+      window.setTimeout(() => document.querySelector('#Search-In-Modal')?.focus(), 100);
+    }, 250);
+  });
+
   customElements.define('sticky-header', StickyHeader);
 {% endjavascript %}
 
