@@ -165,6 +165,10 @@
     endif
   -%}
   <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if country_selector or language_selector %} header--has-localizations{% endif %}">
+    {% render 'header-drawer',
+      menu_type_desktop: section.settings.menu_type_desktop,
+      menu_color_scheme: section.settings.menu_color_scheme
+    %}
     {%- liquid
       assign render_search_left = false
     -%}

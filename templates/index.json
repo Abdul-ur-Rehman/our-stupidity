@@ -12,15 +12,13 @@
     "hero_split": {
       "type": "hero-split",
       "settings": {
-        "eyebrow": "CHRONICLE: UNSEEN — DROP 001",
+        "eyebrow": "CHRONICLES: UNSEEN — DROP 001",
         "headline_1": "DIFFERENT",
         "headline_2": "IS THE",
         "headline_3": "POINT.",
         "subtext": "Grit. Discipline. Built for those who create before they conform. No templates. No trends.",
-        "btn1_label": "SHOP THE DROP",
-        "btn1_link": "shopify://collections/all",
-        "btn2_label": "EXPLORE COLLECTIONS",
-        "btn2_link": "shopify://collections",
+        "btn1_label": "SHOP COLLECTION",
+        "btn1_link": "shopify://collections/chronicles-unseen",
         "section_height": "large",
         "image": "shopify://shop_images/Timer-bg.png",
         "image_position": "left",
@@ -29,7 +27,11 @@
     },
     "truck_divider": {
       "type": "truck-divider",
-      "settings": {}
+      "settings": {
+        "line_color": "#E3000F",
+        "pattern_opacity": 7,
+        "divider_height": 52
+      }
     },
     "brand_statement": {
       "type": "brand-statement",
@@ -45,29 +47,38 @@
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "collection": "",
-        "products_to_show": 4,
+        "collection": "chronicles-unseen",
+        "products_to_show": 3,
         "title": "CURRENT CHRONICLE",
         "heading_size": "h1",
         "description": "<p>Inspired by iconic anime characters.</p>",
-        "show_description": true,
+        "show_description": false,
         "description_style": "body",
         "columns_desktop": 3,
         "enable_desktop_slider": false,
-        "full_width": false,
+        "full_width": true,
         "show_view_all": true,
         "view_all_style": "link",
         "color_scheme": "scheme-1",
         "image_ratio": "portrait",
+        "card_media_height_desktop": 500,
+        "card_media_height_mobile": 400,
+        "card_image_fit": "contain",
+        "fallback_image_1": "shopify://shop_images/sung_woo_2.png",
+        "fallback_image_2": "shopify://shop_images/satoru_png.png",
+        "fallback_image_3": "shopify://shop_images/itachii.png",
         "image_shape": "default",
         "show_secondary_image": false,
-        "show_vendor": false,
+        "show_vendor": true,
         "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 80,
-        "padding_bottom": 80
+        "quick_add": "standard",
+        "quick_add_label": "ADD TO CART",
+        "show_shop_now": true,
+        "shop_now_label": "SHOP NOW",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 0
       }
     },
     "character_lineup": {
