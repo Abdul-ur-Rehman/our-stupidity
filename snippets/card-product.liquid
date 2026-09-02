@@ -593,7 +593,12 @@
           {% endif %}
           {%- if show_shop_now -%}
             {%- if card_product.available -%}
-              <a class="card__shop-now button button--full-width" href="{{ card_product.url }}">
+              {%- assign checkout_variant = card_product.selected_or_first_available_variant -%}
+              {%- assign checkout_quantity = checkout_variant.quantity_rule.min | default: 1 -%}
+              <a
+                class="card__shop-now button button--full-width"
+                href="{{ routes.root_url }}cart/{{ checkout_variant.id }}:{{ checkout_quantity }}?checkout"
+              >
                 {{ shop_now_label | default: 'SHOP NOW' | escape }}
               </a>
             {%- else -%}

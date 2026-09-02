@@ -27,7 +27,18 @@
     data-section-id="{{ section.id }}"
     data-product-id="{{ product.id }}"
   >
-    {% if recommendations.performed and recommendations.products_count > 0 %}
+    {% if recommendations.performed %}
+      {%- liquid
+        assign related_items = recommendations.products
+        assign minimum_pool_size = section.settings.products_to_show | plus: 1
+        if related_items.size < minimum_pool_size
+          assign related_items = product.collections.first.products
+        endif
+        if related_items.size < minimum_pool_size
+          assign related_items = collections.all.products
+        endif
+      -%}
+      {% if related_items.size > 0 %}
       <h2 class="related-products__heading inline-richtext {{ section.settings.heading_size }}">
         {{ section.settings.heading }}
       </h2>
@@ -36,7 +47,11 @@
         role="list"
       >
         {% assign skip_card_product_styles = false %}
-        {% for recommendation in recommendations.products %}
+        {%- assign related_count = 0 -%}
+        {% for recommendation in related_items %}
+          {%- if recommendation.id == product.id -%}
+            {%- continue -%}
+          {%- endif -%}
           <li class="grid__item">
             {% render 'card-product',
               card_product: recommendation,
@@ -45,13 +60,19 @@
               show_secondary_image: section.settings.show_secondary_image,
               show_vendor: section.settings.show_vendor,
               show_rating: section.settings.show_rating,
+              lazy_load: false,
               skip_styles: skip_card_product_styles,
               product_view_context: 'recommendation'
             %}
           </li>
           {%- assign skip_card_product_styles = true -%}
+          {%- assign related_count = related_count | plus: 1 -%}
+          {%- if related_count >= section.settings.products_to_show -%}
+            {%- break -%}
+          {%- endif -%}
         {% endfor %}
       </ul>
+      {% endif %}
     {% endif %}
   </product-recommendations>
   {% if section.settings.image_shape == 'arch' %}

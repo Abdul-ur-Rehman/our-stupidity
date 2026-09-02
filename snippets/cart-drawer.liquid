@@ -5,6 +5,8 @@
   {% render 'cart-drawer' %}
 {% endcomment %}
 
+{%- assign cart_currency_code = cart.currency.iso_code | default: shop.currency -%}
+
 {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 
@@ -29,21 +31,28 @@
     >
       {%- if cart == empty -%}
         <div class="drawer__inner-empty">
+          <button
+            class="drawer__close"
+            type="button"
+            onclick="this.closest('cart-drawer').close()"
+            aria-label="{{ 'accessibility.close' | t }}"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-close.svg' | inline_asset_content -}}
+            </span>
+          </button>
           <div class="cart-drawer__warnings center{% if settings.cart_drawer_collection != blank %} cart-drawer__warnings--has-collection{% endif %}">
             <div class="cart-drawer__empty-content">
-              <h2 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h2>
-              <button
-                class="drawer__close"
-                type="button"
+              <p class="cart-drawer__eyebrow">CURRENT ORDER</p>
+              <p class="cart-drawer__empty-index" aria-hidden="true">00</p>
+              <h2 class="cart__empty-text">YOUR CART IS EMPTY</h2>
+              <p class="cart-drawer__empty-copy">Your next chronicle is waiting. Choose a piece and make it yours.</p>
+              <a
+                href="{{ routes.root_url }}#shop-collection"
+                class="button cart-drawer__empty-button"
                 onclick="this.closest('cart-drawer').close()"
-                aria-label="{{ 'accessibility.close' | t }}"
               >
-                <span class="svg-wrapper">
-                  {{- 'icon-close.svg' | inline_asset_content -}}
-                </span>
-              </button>
-              <a href="{{ routes.all_products_collection_url }}" class="button">
-                {{ 'general.continue_shopping' | t }}
+                SHOP THE COLLECTION
               </a>
 
               {%- if shop.customer_accounts_enabled and customer == null -%}
@@ -62,7 +71,13 @@
         </div>
       {%- endif -%}
       <div class="drawer__header">
-        <h2 class="drawer__heading">{{ 'sections.cart.title' | t }}</h2>
+        <div class="drawer__heading-group">
+          <p class="cart-drawer__eyebrow">CURRENT ORDER</p>
+          <h2 class="drawer__heading">
+            {{ 'sections.cart.title' | t }}
+            <span class="drawer__count" aria-label="{{ cart.item_count }} items">{{ cart.item_count }}</span>
+          </h2>
+        </div>
         <button
           class="drawer__close"
           type="button"
@@ -169,18 +184,18 @@
                                 {{ 'products.product.price.regular_price' | t }}
                               </span>
                               <s class="cart-item__old-price product-option">
-                                {{- item.original_price | money -}}
+                                {{- cart_currency_code }} {{ item.original_price | money_without_currency | replace: '.00', '' -}}
                               </s>
                               <span class="visually-hidden">
                                 {{ 'products.product.price.sale_price' | t }}
                               </span>
                               <strong class="cart-item__final-price product-option">
-                                {{ item.final_price | money }}
+                                {{ cart_currency_code }} {{ item.final_price | money_without_currency | replace: '.00', '' }}
                               </strong>
                             </div>
                           {%- else -%}
                             <div class="product-option">
-                              {{ item.original_price | money }}
+                              {{ cart_currency_code }} {{ item.original_price | money_without_currency | replace: '.00', '' }}
                             </div>
                           {%- endif -%}
 
@@ -528,7 +543,9 @@
 
           <div class="totals" role="status">
             <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
-            <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+            <p class="totals__total-value">
+              {{ cart_currency_code }} {{ cart.total_price | money_without_currency | replace: '.00', '' }}
+            </p>
           </div>
 
           <small class="tax-note caption-large rte">
@@ -585,8 +602,16 @@
               disabled
             {% endif %}
           >
-            {{ 'sections.cart.checkout' | t }}
+            <span>{{ 'sections.cart.checkout' | t }}</span>
+            <span aria-hidden="true">→</span>
           </button>
+          <a
+            href="{{ routes.root_url }}#shop-collection"
+            class="cart-drawer__continue"
+            onclick="this.closest('cart-drawer').close()"
+          >
+            CONTINUE SHOPPING
+          </a>
         </div>
       </div>
     </div>
