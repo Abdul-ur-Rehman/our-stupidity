@@ -3530,3 +3530,48 @@ cart-drawer.drawer.is-empty .drawer__inner {
     padding: 1rem !important;
   }
 }
+
+/* Restrained product-page typography. */
+.product-section .product__title h1 {
+  width: 100%;
+  max-width: 62rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--os-font-b);
+  font-size: clamp(3.2rem, 3vw, 4.8rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.14;
+  text-transform: none;
+}
+
+.product-section .price--large,
+.product-section .price--large .price-item,
+.product-section .price--on-sale .price-item--sale {
+  color: rgba(255, 255, 255, 0.76);
+  font-family: var(--os-font-b);
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+.product-section .price--on-sale .price-item--regular {
+  color: rgba(255, 255, 255, 0.38);
+  font-family: var(--os-font-b);
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 749px) {
+  .product-section .product__title h1 {
+    font-size: clamp(2.8rem, 8vw, 3.8rem);
+    line-height: 1.16;
+  }
+
+  .product-section .price--large,
+  .product-section .price--large .price-item,
+  .product-section .price--on-sale .price-item--sale {
+    font-size: 1.8rem;
+  }
+}

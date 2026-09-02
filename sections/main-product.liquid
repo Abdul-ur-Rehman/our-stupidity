@@ -106,9 +106,6 @@
                   </p>
                 {%- when 'title' -%}
                   <div class="product__title" {{ block.shopify_attributes }}>
-                    {%- if product.collections.first != blank -%}
-                      <span class="product__collection-badge">{{ product.collections.first.title }}</span>
-                    {%- endif -%}
                     <h1>{{ product.title | escape }}</h1>
                   </div>
                 {%- when 'price' -%}
