@@ -1532,6 +1532,67 @@ shopify-account.header__icon {
   }
 }
 
+/* Subtle commerce typography for featured and related product cards. */
+.featured-collection .card__heading,
+.featured-collection .card__heading a,
+.related-products .card__heading,
+.related-products .card__heading a {
+  margin: 0 0 0.8rem !important;
+  padding: 0 !important;
+  border-bottom: 0 !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-family: var(--os-font-b) !important;
+  font-size: 1.8rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.025em !important;
+  line-height: 1.35 !important;
+  text-decoration: none !important;
+  text-transform: none !important;
+}
+
+.featured-collection .card__information .price,
+.featured-collection .card__information .price-item,
+.related-products .card__information .price,
+.related-products .card__information .price-item {
+  margin-top: 0 !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-family: var(--os-font-b) !important;
+  font-size: 1.6rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.025em !important;
+  line-height: 1.35 !important;
+}
+
+.featured-collection .card__information .price--sold-out,
+.featured-collection .card__information .price--sold-out .price-item,
+.related-products .card__information .price--sold-out,
+.related-products .card__information .price--sold-out .price-item {
+  color: rgba(255, 255, 255, 0.42) !important;
+}
+
+.featured-collection .card__information .price--on-sale .price-item--regular,
+.related-products .card__information .price--on-sale .price-item--regular {
+  color: rgba(255, 255, 255, 0.38) !important;
+  font-size: 1.3rem !important;
+  font-weight: 400 !important;
+}
+
+@media screen and (max-width: 749px) {
+  .featured-collection .card__heading,
+  .featured-collection .card__heading a,
+  .related-products .card__heading,
+  .related-products .card__heading a {
+    font-size: 1.65rem !important;
+  }
+
+  .featured-collection .card__information .price,
+  .featured-collection .card__information .price-item,
+  .related-products .card__information .price,
+  .related-products .card__information .price-item {
+    font-size: 1.5rem !important;
+  }
+}
+
 @media screen and (max-width: 749px) {
   .product-section .page-width {
     padding: 0;
@@ -2811,6 +2872,15 @@ cart-drawer.drawer.is-empty .drawer__inner {
   font-size: 1.1rem !important;
   letter-spacing: 0.1em !important;
   padding: 4px 10px !important;
+}
+
+/* Keep drop badges visually nested inside the hover corner bracket. */
+.product-card-wrapper .card__inner > .card__content > .card__badge {
+  position: absolute;
+  top: 1.8rem;
+  left: 1.8rem;
+  z-index: 5;
+  margin: 0 !important;
 }
 
 /* Hide the duplicate badge that appears below the image */
