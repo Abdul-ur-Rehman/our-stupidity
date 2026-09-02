@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "rich_text": {
@@ -13,11 +22,14 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>EMAIL</strong><br>hello@ourstupidity.com</p><p><strong>INSTAGRAM</strong><br>@ourstupidity_</p><p><strong>RESPONSE TIME</strong><br>We usually reply within 24–48 hours.</p>"
+            "text": "<p><strong>EMAIL</strong><br/>hello.ourstupidity@gmail.com</p><p><strong>INSTAGRAM</strong><br/>@ourstupidty</p><p><strong>RESPONSE TIME</strong><br/>We usually reply within 24–48 hours.</p>"
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "settings": {
         "desktop_content_position": "left",
         "content_alignment": "left",

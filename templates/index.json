@@ -28,7 +28,7 @@
     "truck_divider": {
       "type": "truck-divider",
       "settings": {
-        "line_color": "#E3000F",
+        "line_color": "#e3000f",
         "pattern_opacity": 7,
         "divider_height": 52
       }
@@ -38,7 +38,7 @@
       "settings": {
         "eyebrow": "OUR STUPIDITY",
         "headline_1": "WE'RE NOT HERE",
-        "headline_2": "TO FIT ",
+        "headline_2": "TO FIT",
         "headline_accent": "IN.",
         "body_text": "Anime-inspired apparel for the ones who live differently. Each drop is a chapter. Each piece is a statement. Wear your story.",
         "padding_vertical": 96
@@ -47,7 +47,7 @@
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "collection": "chronicles-unseen",
+        "collection": "asset-pack-93835198466-example-products",
         "products_to_show": 3,
         "title": "CURRENT CHRONICLE",
         "heading_size": "h1",

@@ -8,6 +8,7 @@
   - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
   - price_class: {String} Adds a price class to the price element (optional)
   - show_compare_at_price: {Boolean} Renders the compare at price if the product matches the condition (optional)
+  - use_iso_currency: {Boolean} Prefixes ISO currency and removes trailing .00 for compact card prices (optional)
 
   Usage:
   {% render 'price', product: product %}
@@ -29,10 +30,22 @@
   assign money_price = price | money
   assign money_price_min = price_min | money
   assign money_price_max = price_max | money
-  if settings.currency_code_enabled
+  assign money_compare_at_price = compare_at_price | money
+  if use_iso_currency
+    assign currency_iso_code = cart.currency.iso_code | default: shop.currency
+    assign money_price = price | money_without_currency | replace: '.00', '' | prepend: ' '
+    assign money_price = currency_iso_code | append: money_price
+    assign money_price_min = price_min | money_without_currency | replace: '.00', '' | prepend: ' '
+    assign money_price_min = currency_iso_code | append: money_price_min
+    assign money_price_max = price_max | money_without_currency | replace: '.00', '' | prepend: ' '
+    assign money_price_max = currency_iso_code | append: money_price_max
+    assign money_compare_at_price = compare_at_price | money_without_currency | replace: '.00', '' | prepend: ' '
+    assign money_compare_at_price = currency_iso_code | append: money_compare_at_price
+  elsif settings.currency_code_enabled
     assign money_price = price | money_with_currency
     assign money_price_min = price_min | money_with_currency
     assign money_price_max = price_max | money_with_currency
+    assign money_compare_at_price = compare_at_price | money_with_currency
   endif
 
   if target == product and product.price_varies
@@ -67,11 +80,7 @@
               </span>
               <span>
                 <s class="price-item price-item--regular variant-item__old-price">
-                  {% if settings.currency_code_enabled %}
-                    {{ compare_at_price | money_with_currency }}
-                  {% else %}
-                    {{ compare_at_price | money }}
-                  {% endif %}
+                  {{ money_compare_at_price }}
                 </s>
               </span>
             {%- endunless -%}
@@ -95,11 +104,7 @@
           <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
           <span>
             <s class="price-item price-item--regular">
-              {% if settings.currency_code_enabled %}
-                {{ compare_at_price | money_with_currency }}
-              {% else %}
-                {{ compare_at_price | money }}
-              {% endif %}
+              {{ money_compare_at_price }}
             </s>
           </span>
         {%- endunless -%}
