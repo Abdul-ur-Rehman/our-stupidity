@@ -320,29 +320,27 @@
   font-size: 0.82rem;
 }
 
-.os-search-page .price {
+.os-search-page .card-information .price,
+.os-search-page .card-information .price-item {
   margin-top: 0.8rem;
-  color: rgba(255, 255, 255, 0.62);
+  color: rgba(255, 255, 255, 0.64) !important;
   font-family: var(--os-font-b, 'Inter', system-ui, sans-serif) !important;
-  font-size: 1.2rem;
-  font-weight: 500 !important;
-  letter-spacing: 0.01em !important;
+  font-size: 1.1rem !important;
+  font-weight: 400 !important;
+  line-height: 1.35 !important;
+  letter-spacing: 0 !important;
   text-transform: none !important;
 }
 
-.os-search-page .price-item {
-  font-family: inherit !important;
-  font-size: inherit !important;
-  font-weight: inherit !important;
-  letter-spacing: inherit !important;
+.os-search-page .card-information .price-item--sale {
+  color: rgba(255, 255, 255, 0.76) !important;
+  font-weight: 500 !important;
 }
 
-.os-search-page .price-item--sale {
-  color: rgba(255, 255, 255, 0.82);
-}
-
-.os-search-page .price-item--regular {
-  color: rgba(255, 255, 255, 0.36);
+.os-search-page .card-information .price--on-sale .price-item--regular {
+  color: rgba(255, 255, 255, 0.3) !important;
+  font-size: 0.98rem !important;
+  font-weight: 400 !important;
 }
 
 .os-search-page .quick-add,
@@ -369,31 +367,51 @@
 .os-search-page .card__shop-now {
   min-height: 4rem;
   padding: 0 0.7rem;
-  border-radius: 0;
-  font-size: 0.68rem;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-family: var(--os-font-b, 'Inter', system-ui, sans-serif);
+  font-size: 0.9rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.11em;
+  text-transform: uppercase;
 }
 
-.os-search-page .quick-add__submit:not(:disabled) {
-  border-color: var(--os-red, #e3000f);
-  background: var(--os-red, #e3000f);
-  color: #fff;
+.os-search-page .quick-add__submit::before,
+.os-search-page .quick-add__submit::after,
+.os-search-page .card__shop-now::before,
+.os-search-page .card__shop-now::after {
+  box-shadow: none !important;
 }
 
-.os-search-page .card__shop-now:not([aria-disabled='true']):not(:disabled) {
-  border: 1px solid var(--os-gold, #c9a84c);
-  background: transparent;
-  color: var(--os-gold, #c9a84c);
+.os-search-page .quick-add__submit.button--secondary:not(:disabled) {
+  border: 1px solid var(--os-red, #e3000f) !important;
+  background: var(--os-red, #e3000f) !important;
+  color: #fff !important;
+}
+
+.os-search-page .quick-add__submit.button--secondary:not(:disabled):hover {
+  border-color: var(--os-red-hover, #b8000c) !important;
+  background: var(--os-red-hover, #b8000c) !important;
+}
+
+.os-search-page .card__shop-now.button:not([aria-disabled='true']):not(:disabled) {
+  border: 1px solid rgba(201, 168, 76, 0.78) !important;
+  background: rgba(8, 8, 8, 0.94) !important;
+  color: var(--os-gold, #c9a84c) !important;
+}
+
+.os-search-page .card__shop-now.button:not([aria-disabled='true']):not(:disabled):hover {
+  background: var(--os-gold, #c9a84c) !important;
+  color: #080808 !important;
 }
 
 .os-search-page .quick-add__submit:disabled,
 .os-search-page .card__shop-now:disabled,
 .os-search-page .card__shop-now[aria-disabled='true'] {
-  border: 1px solid #303030;
-  background: #111;
-  color: rgba(255, 255, 255, 0.28);
+  border: 1px solid #303030 !important;
+  background: #151515 !important;
+  color: #555 !important;
   cursor: not-allowed;
 }
 
@@ -467,7 +485,7 @@
   .os-search-page .quick-add__submit,
   .os-search-page .card__shop-now {
     min-height: 3.7rem;
-    font-size: 0.62rem;
+    font-size: 0.72rem;
   }
 
   .os-search-page .card__heading,
@@ -475,7 +493,8 @@
     font-size: 1.12rem !important;
   }
 
-  .os-search-page .price {
-    font-size: 1.05rem;
+  .os-search-page .card-information .price,
+  .os-search-page .card-information .price-item {
+    font-size: 1rem !important;
   }
 }
