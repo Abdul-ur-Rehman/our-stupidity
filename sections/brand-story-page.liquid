@@ -1,0 +1,267 @@
+{{ 'section-brand-story-page.css' | asset_url | stylesheet_tag }}
+
+<section class="os-brand-story">
+  <div class="os-brand-story__hero">
+    <div class="os-brand-story__hero-media">
+      {%- if section.settings.hero_image != blank -%}
+        {{
+          section.settings.hero_image
+          | image_url: width: 2200
+          | image_tag:
+            widths: '550, 750, 1100, 1500, 1800, 2200',
+            sizes: '(min-width: 990px) 58vw, 100vw',
+            loading: 'eager',
+            fetchpriority: 'high',
+            class: 'os-brand-story__hero-image'
+        }}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'os-brand-story__hero-placeholder' }}
+      {%- endif -%}
+    </div>
+
+    <div class="os-brand-story__hero-grid" aria-hidden="true"></div>
+    <div class="os-brand-story__watermark" aria-hidden="true">{{ section.settings.watermark }}</div>
+
+    <div class="os-brand-story__hero-content">
+      <p class="os-brand-story__eyebrow">
+        <span></span>{{ section.settings.hero_eyebrow | escape }}
+      </p>
+      <h1 class="os-brand-story__title">
+        {{ section.settings.hero_heading | escape }}
+        <strong>{{ section.settings.hero_accent | escape }}</strong>
+      </h1>
+      <div class="os-brand-story__hero-copy rte">{{ section.settings.hero_text }}</div>
+
+      <div class="os-brand-story__principles" aria-label="Brand principles">
+        <span>{{ section.settings.principle_one | escape }}</span>
+        <span>{{ section.settings.principle_two | escape }}</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="os-brand-story__statement page-width">
+    <div class="os-brand-story__statement-index">
+      <span>{{ section.settings.statement_eyebrow | escape }}</span>
+    </div>
+    <div class="os-brand-story__statement-content">
+      <h2>{{ section.settings.statement_heading }}</h2>
+      <div class="os-brand-story__statement-copy rte">{{ section.settings.statement_text }}</div>
+    </div>
+  </div>
+
+  <div class="os-brand-story__journey">
+    <div class="page-width">
+      <div class="os-brand-story__section-heading">
+        <div>
+          <p>{{ section.settings.journey_eyebrow | escape }}</p>
+          <h2>{{ section.settings.journey_heading | escape }}</h2>
+        </div>
+        <p>{{ section.settings.journey_intro | escape }}</p>
+      </div>
+
+      <div class="os-brand-story__chapters">
+        {%- for block in section.blocks -%}
+          <article class="os-brand-story__chapter" {{ block.shopify_attributes }}>
+            <div class="os-brand-story__chapter-top">
+              <span>CHAPTER {{ block.settings.number | escape }}</span>
+              <strong aria-hidden="true">{{ block.settings.number | escape }}</strong>
+            </div>
+            <p class="os-brand-story__chapter-jp" lang="ja">{{ block.settings.japanese_title | escape }}</p>
+            <h3>{{ block.settings.title | escape }}</h3>
+            <div class="os-brand-story__chapter-copy rte">{{ block.settings.text }}</div>
+          </article>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="os-brand-story__manifesto">
+    <div class="os-brand-story__manifesto-grid" aria-hidden="true"></div>
+    <div class="os-brand-story__manifesto-inner page-width">
+      <p class="os-brand-story__manifesto-eyebrow">{{ section.settings.manifesto_eyebrow | escape }}</p>
+      <h2>{{ section.settings.manifesto_heading }}</h2>
+      <div class="os-brand-story__manifesto-bottom">
+        <div class="os-brand-story__manifesto-copy rte">{{ section.settings.manifesto_text }}</div>
+        {%- if section.settings.button_label != blank -%}
+          <a
+            class="os-brand-story__button"
+            {% if section.settings.button_link == blank %}
+              role="link" aria-disabled="true"
+            {% else %}
+              href="{{ section.settings.button_link }}"
+            {% endif %}
+          >
+            {{ section.settings.button_label | escape }}
+            <span aria-hidden="true">→</span>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand story page",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "hero_eyebrow",
+      "label": "Hero eyebrow",
+      "default": "OUR ORIGIN"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Hero heading",
+      "default": "TIRED OF FITTING IN."
+    },
+    {
+      "type": "text",
+      "id": "hero_accent",
+      "label": "Hero accent",
+      "default": "SO WE STARTED."
+    },
+    {
+      "type": "richtext",
+      "id": "hero_text",
+      "label": "Hero text",
+      "default": "<p>They said naming a brand after a weakness was stupid. That was exactly the point.</p><p>We create identity for the ones who find more truth in stories than trends.</p>"
+    },
+    {
+      "type": "text",
+      "id": "watermark",
+      "label": "Hero watermark",
+      "default": "愚かさ"
+    },
+    {
+      "type": "text",
+      "id": "principle_one",
+      "label": "First principle",
+      "default": "STORIES OVER TRENDS"
+    },
+    {
+      "type": "text",
+      "id": "principle_two",
+      "label": "Second principle",
+      "default": "IDENTITY OVER APPROVAL"
+    },
+    {
+      "type": "text",
+      "id": "statement_eyebrow",
+      "label": "Statement eyebrow",
+      "default": "WHY THE NAME"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "statement_heading",
+      "label": "Statement heading",
+      "default": "Most original ideas are called <em>stupid</em> before anyone sees their value."
+    },
+    {
+      "type": "richtext",
+      "id": "statement_text",
+      "label": "Statement text",
+      "default": "<p>The ideas that changed culture, built movements and defined generations all started with someone who refused to wait for permission.</p><p><strong>We create before approval. We drop before the trend.</strong></p>"
+    },
+    {
+      "type": "text",
+      "id": "journey_eyebrow",
+      "label": "Journey eyebrow",
+      "default": "THE JOURNEY / 01—03"
+    },
+    {
+      "type": "text",
+      "id": "journey_heading",
+      "label": "Journey heading",
+      "default": "HOW STUPIDITY BECAME THE POINT."
+    },
+    {
+      "type": "text",
+      "id": "journey_intro",
+      "label": "Journey introduction",
+      "default": "Three decisions shaped everything we make."
+    },
+    {
+      "type": "text",
+      "id": "manifesto_eyebrow",
+      "label": "Manifesto eyebrow",
+      "default": "THIS IS OUR STUPIDITY"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "manifesto_heading",
+      "label": "Manifesto heading",
+      "default": "Wear what you believe <em>before the world approves it.</em>"
+    },
+    {
+      "type": "richtext",
+      "id": "manifesto_text",
+      "label": "Manifesto text",
+      "default": "<p>For the misfits, the dreamers and everyone who refuses to follow the same path.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "SHOP THE COLLECTION"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "chapter",
+      "name": "Chapter",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "japanese_title",
+          "label": "Japanese title",
+          "default": "ザ・プロブレム"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "THE PROBLEM"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Every anime store sold the same generic prints. No soul. No story. Just merchandise.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand story page",
+      "blocks": [
+        { "type": "chapter" },
+        { "type": "chapter" },
+        { "type": "chapter" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -260,7 +260,26 @@
   }
 </style>
 
+{{ 'section-footer-brand.css' | asset_url | stylesheet_tag }}
+
 <footer class="os-footer">
+
+  {%- liquid
+    assign show_footer_signal = false
+    if request.page_type == 'page'
+      if page.handle == 'brand-story' or template.suffix == 'about' or template.suffix == 'brand-story'
+        assign show_footer_signal = true
+      endif
+    endif
+  -%}
+
+  {%- if show_footer_signal -%}
+    <div class="os-footer__signal" aria-label="Our Stupidity manifesto">
+      <span>OUR STUPIDITY / 2026</span>
+      <strong>WEAR THE STORY. NOT THE TREND.</strong>
+      <span>LIMITED PIECES / NO RESTOCKS</span>
+    </div>
+  {%- endif -%}
 
   <div class="os-footer__inner">
     <div class="os-footer__top">
@@ -289,18 +308,13 @@
             <li><a href="{{ routes.root_url }}pages/shipping">Shipping</a></li>
             <li><a href="{{ routes.root_url }}pages/returns">Returns</a></li>
             <li><a href="{{ routes.root_url }}pages/faq">FAQ</a></li>
-            {%- for policy in shop.policies -%}
-              {%- if policy != blank -%}
-                <li><a href="{{ policy.url }}">{{ policy.title | escape }}</a></li>
-              {%- endif -%}
-            {%- endfor -%}
           </ul>
         </div>
       </nav>
 
       <!-- Social -->
       <div class="os-footer__social">
-        <span class="os-footer__social-label">Follow</span>
+        <span class="os-footer__social-label">Socials</span>
         <div class="os-footer__social-icons">
           {%- if settings.social_instagram_link != blank -%}
             <a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener" aria-label="Instagram">
@@ -332,6 +346,16 @@
     <p class="os-footer__copy">
       &copy; {{ 'now' | date: '%Y' }} <a href="{{ routes.root_url }}">Our Stupidity</a>
     </p>
+
+    {%- if section.settings.show_policy -%}
+      <ul class="os-footer__policies">
+        {%- for policy in shop.policies -%}
+          {%- if policy != blank -%}
+            <li><a href="{{ policy.url }}">{{ policy.title | escape }}</a></li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
 
     <span class="os-footer__kanji" aria-hidden="true">愚か</span>
 

@@ -9,116 +9,66 @@
  */
 {
   "sections": {
-    "hero": {
-      "type": "image-with-text",
+    "brand_story": {
+      "type": "brand-story-page",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "chapter_problem": {
+          "type": "chapter",
           "settings": {
-            "heading": "WE STARTED OUR STUPIDITY BECAUSE WE WERE TIRED OF FITTING IN.",
-            "heading_size": "h0"
+            "number": "01",
+            "japanese_title": "ザ・プロブレム",
+            "title": "THE PROBLEM",
+            "text": "<p>Every anime store sold the same generic prints. No soul. No story. Just merchandise. We saw characters that deserved better — icons that meant something to their fans.</p>"
           }
         },
-        "text": {
-          "type": "text",
+        "chapter_realization": {
+          "type": "chapter",
           "settings": {
-            "text": "<p>This isn't a brand. It's a mindset. We create for those who think different, dress different, and live different.</p>",
-            "text_style": "body"
+            "number": "02",
+            "japanese_title": "ザ・リアライゼーション",
+            "title": "THE REALIZATION",
+            "text": "<p>Clothing is identity. It tells the world who you are when words fail. People did not want to wear anime — they wanted to wear what those characters represented.</p>"
+          }
+        },
+        "chapter_creation": {
+          "type": "chapter",
+          "settings": {
+            "number": "03",
+            "japanese_title": "ザ・クリエーション",
+            "title": "THE CREATION",
+            "text": "<p>Limited drops. High-quality prints. Real storytelling. Every piece carries a character and every drop becomes an event. No endless restocks.</p>"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text"
+        "chapter_problem",
+        "chapter_realization",
+        "chapter_creation"
       ],
       "settings": {
-        "height": "large",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "zoom",
-        "content_layout": "overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "",
-        "color_scheme": "scheme-1",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "story_intro": {
-      "type": "rich-text",
-      "blocks": {
-        "intro": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Most original ideas are called stupid before anyone sees their value. We named this brand Our Stupidity because the ideas that change something rarely make sense at first.</p><p><strong>We create before approval. We wear what we believe before the world accepts it.</strong></p>"
-          }
-        }
-      },
-      "block_order": [
-        "intro"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 80,
-        "padding_bottom": 80
-      }
-    },
-    "bilingual_section": {
-      "type": "bilingual-chapters",
-      "settings": {
-        "title": "THE JOURNEY",
-        "color_scheme": "scheme-1",
-        "padding_top": 80,
-        "padding_bottom": 80
-      }
-    },
-    "manifesto": {
-      "type": "rich-text",
-      "blocks": {
-        "tagline": {
-          "type": "text",
-          "settings": {
-            "text": "<p>FOR THE MISFITS. FOR THE DREAMERS. FOR THE ONES WHO REFUSE TO FOLLOW.</p>"
-          }
-        },
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "We believe in originality over approval. Stories over trends. Purpose over popularity.",
-            "heading_size": "h1"
-          }
-        },
-        "subtext": {
-          "type": "text",
-          "settings": {
-            "text": "<p>This is Our Stupidity. And this is just the beginning.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "tagline",
-        "heading",
-        "subtext"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "full_width": true,
-        "padding_top": 100,
-        "padding_bottom": 100
+        "hero_image": "shopify://shop_images/brand-story.jpg",
+        "hero_eyebrow": "OUR ORIGIN",
+        "hero_heading": "TIRED OF FITTING IN.",
+        "hero_accent": "SO WE STARTED.",
+        "hero_text": "<p>They said naming a brand after a weakness was stupid. That was exactly the point.</p><p>We create identity for the ones who find more truth in stories than trends.</p>",
+        "watermark": "愚かさ",
+        "principle_one": "STORIES OVER TRENDS",
+        "principle_two": "IDENTITY OVER APPROVAL",
+        "statement_eyebrow": "WHY THE NAME",
+        "statement_heading": "Most original ideas are called <em>stupid</em> before anyone sees their value.",
+        "statement_text": "<p>The ideas that changed culture, built movements and defined generations all started with someone who refused to wait for permission.</p><p><strong>We create before approval. We drop before the trend.</strong></p>",
+        "journey_eyebrow": "THE JOURNEY / 01—03",
+        "journey_heading": "HOW STUPIDITY BECAME THE POINT.",
+        "journey_intro": "Three decisions shaped everything we make.",
+        "manifesto_eyebrow": "THIS IS OUR STUPIDITY",
+        "manifesto_heading": "Wear what you believe <em>before the world approves it.</em>",
+        "manifesto_text": "<p>For the misfits, the dreamers and everyone who refuses to follow the same path.</p>",
+        "button_label": "SHOP THE COLLECTION",
+        "button_link": "/#shop-collection"
       }
     }
   },
   "order": [
-    "hero",
-    "story_intro",
-    "bilingual_section",
-    "manifesto"
+    "brand_story"
   ]
 }

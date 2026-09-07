@@ -58,6 +58,16 @@
     if card_action_label == blank
       assign card_action_label = 'products.product.add_to_cart' | t
     endif
+    assign drop_tag = ''
+    for tag in card_product.tags
+      assign normalized_tag = tag | downcase
+      if normalized_tag contains 'drop'
+        assign drop_tag = tag | upcase
+        break
+      endif
+    endfor
+    assign sale_badge_label = 'products.product.on_sale' | t
+    assign normalized_sale_badge_label = sale_badge_label | downcase
   -%}
 
   <product-component view-event-payload="{{ card_product | standard_event_data: 'view', context: product_view_context | escape }}">
@@ -74,6 +84,13 @@
         "
         style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
       >
+        {%- if product_view_context == 'collection' -%}
+          <a
+            class="card__product-link-overlay"
+            href="{{ card_product.url }}"
+            aria-label="View {{ card_product.title | escape }}"
+          ></a>
+        {%- endif -%}
         <div
           class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_media or settings.card_style == 'standard' %} ratio{% endif %}"
           style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
@@ -150,24 +167,22 @@
                 </a>
               </h3>
             </div>
-            <div class="card__badge {{ settings.badge_position }}">
-              {%- liquid
-                assign drop_tag = ''
-                for tag in card_product.tags
-                  if tag contains 'DROP' or tag contains 'drop'
-                    assign drop_tag = tag | upcase
-                    break
-                  endif
-                endfor
-              -%}
-              {%- if drop_tag != '' -%}
+            <div class="card__badge card__badge--status {{ settings.badge_position }}">
+              {%- if card_product.available == false -%}
+                <span
+                  id="Badge-{{ section_id }}-{{ card_product.id }}"
+                  class="badge badge--sold-out color-{{ settings.sold_out_badge_color_scheme }}"
+                >
+                  SOLD OUT
+                </span>
+              {%- elsif drop_tag != '' -%}
                 <span class="badge badge--drop">{{ drop_tag }}</span>
               {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
                 <span
-                  id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                  class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+                  id="Badge-{{ section_id }}-{{ card_product.id }}"
+                  class="badge {% if normalized_sale_badge_label contains 'drop' %}badge--drop{% else %}badge--sale{% endif %} color-{{ settings.sale_badge_color_scheme }}"
                 >
-                  {{- 'products.product.on_sale' | t -}}
+                  {{- sale_badge_label -}}
                 </span>
               {%- endif -%}
             </div>
@@ -597,7 +612,10 @@
               {%- assign checkout_quantity = checkout_variant.quantity_rule.min | default: 1 -%}
               <a
                 class="card__shop-now button button--full-width"
-                href="{{ routes.root_url }}cart/{{ checkout_variant.id }}:{{ checkout_quantity }}?checkout"
+                href="{{ routes.root_url }}checkout"
+                data-card-buy-now
+                data-variant-id="{{ checkout_variant.id }}"
+                data-quantity="{{ checkout_quantity }}"
               >
                 {{ shop_now_label | default: 'SHOP NOW' | escape }}
               </a>
@@ -607,23 +625,6 @@
               </button>
             {%- endif -%}
           {%- endif -%}
-          <div class="card__badge {{ settings.badge_position }}">
-            {%- if card_product.available == false -%}
-              <span
-                id="Badge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
-              >
-                SOLD OUT
-              </span>
-            {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
-              <span
-                id="Badge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
-              >
-                {{- 'products.product.on_sale' | t -}}
-              </span>
-            {%- endif -%}
-          </div>
         </div>
       </div>
     </div>

@@ -2,6 +2,10 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-search.css' | asset_url | stylesheet_tag }}
+{{ 'quick-add.css' | asset_url | stylesheet_tag }}
+{{ 'section-search-page.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
 {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
   {{ 'component-facets.css' | asset_url | stylesheet_tag }}
@@ -64,15 +68,22 @@
 {%- endstyle -%}
 
 {% paginate search.results by 24 %}
-  <div class="template-search{% unless search.performed and search.results_count > 0 %} template-search--empty{% endunless %} section-{{ section.id }}-padding">
+  <div class="template-search os-search-page{% unless search.performed and search.results_count > 0 %} template-search--empty{% endunless %} section-{{ section.id }}-padding">
     <div class="template-search__header page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      <h1 class="h2 center">
+      <p class="os-search-page__eyebrow">DISCOVER / OUR STUPIDITY</p>
+      <h1 class="os-search-page__title center">
         {%- if search.performed -%}
           {{- 'templates.search.title' | t -}}
         {%- else -%}
-          {{- 'general.search.search' | t -}}
+          FIND YOUR NEXT PIECE
         {%- endif -%}
       </h1>
+      {%- if search.performed and search.terms != blank -%}
+        <p class="os-search-page__context">
+          {{ search.results_count }} {% if search.results_count == 1 %}result{% else %}results{% endif %} for
+          <strong>“{{ search.terms | escape }}”</strong>
+        </p>
+      {%- endif -%}
       <div class="template-search__search">
         {%- if settings.predictive_search_enabled -%}
           <predictive-search data-loading-text="{{ 'accessibility.loading' | t }}">
@@ -221,7 +232,8 @@
                 enable_filtering: section.settings.enable_filtering,
                 enable_sorting: section.settings.enable_sorting,
                 filter_type: section.settings.filter_type,
-                paginate: paginate
+                paginate: paginate,
+                mobile_label: 'Filters'
               %}
             </aside>
           {%- endif -%}
@@ -271,7 +283,6 @@
                   >
                     {%- case item.object_type -%}
                       {%- when 'product' -%}
-                        {%- capture product_settings -%}{%- if section.settings.product_show_vendor -%}vendor,{%- endif -%}title,price{%- endcapture -%}
                         {% render 'card-product',
                           card_product: item,
                           media_aspect_ratio: section.settings.image_ratio,
@@ -281,6 +292,11 @@
                           show_rating: section.settings.show_rating,
                           lazy_load: lazy_load,
                           skip_styles: skip_card_product_styles,
+                          quick_add: 'standard',
+                          quick_add_label: 'ADD TO CART',
+                          show_shop_now: true,
+                          shop_now_label: 'BUY NOW',
+                          section_id: section.id,
                           product_view_context: 'search'
                         %}
                         {%- assign skip_card_product_styles = true -%}

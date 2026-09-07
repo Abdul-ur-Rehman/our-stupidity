@@ -1,7 +1,348 @@
-.related-products {
-  display: block;
+.os-related-products-shell {
+  overflow: hidden;
+  border-top: 1px solid rgba(201, 168, 76, 0.36);
+  background:
+    radial-gradient(circle at 88% 0%, rgba(227, 0, 15, 0.06), transparent 26%),
+    #080808;
 }
 
-.related-products__heading {
-  margin: 0 0 3rem;
+.os-related-products {
+  display: block;
+  max-width: 148rem;
+}
+
+.os-related-products .related-products__header {
+  display: grid;
+  margin-bottom: 3.2rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+}
+
+.os-related-products .related-products__eyebrow {
+  grid-column: 1 / -1;
+  margin: 0 0 0.9rem;
+  color: var(--os-gold, #c9a84c);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.os-related-products .related-products__heading {
+  margin: 0;
+  color: #f4f1eb;
+  font-family: var(--os-font-d, 'Bebas Neue', Impact, sans-serif);
+  font-size: clamp(4rem, 4.8vw, 6.2rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.os-related-products .related-products__intro {
+  max-width: 32rem;
+  margin: 0 0 0.3rem 3rem;
+  color: rgba(255, 255, 255, 0.44);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  text-align: right;
+}
+
+.os-related-products .product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.6rem;
+  margin: 0;
+  padding: 0;
+}
+
+.os-related-products .product-grid > .grid__item {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  border: 1px solid #242424;
+  background: #0b0b0b !important;
+}
+
+.os-related-products .card-wrapper,
+.os-related-products .card {
+  width: 100%;
+  height: 100%;
+  background: #0b0b0b !important;
+}
+
+.os-related-products .card {
+  display: flex;
+  flex-direction: column;
+}
+
+.os-related-products .card__inner.ratio {
+  --ratio-percent: 0% !important;
+  display: block;
+  width: 100%;
+  height: clamp(29rem, 27vw, 36rem) !important;
+  flex: 0 0 clamp(29rem, 27vw, 36rem);
+  overflow: hidden;
+  border: 0;
+  border-bottom: 1px solid #242424;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.035), transparent 56%),
+    #090909;
+  transform: none !important;
+}
+
+.os-related-products .card__inner.ratio::before {
+  padding-bottom: 0 !important;
+}
+
+.os-related-products .card__media,
+.os-related-products .card__media .media {
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  background: transparent;
+}
+
+.os-related-products .card__media .media img {
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: none !important;
+}
+
+.os-related-products .card__inner > .card__content {
+  position: absolute !important;
+  z-index: 3;
+  inset: 0 !important;
+  width: 100%;
+  height: 100%;
+  padding: 0 !important;
+  background: transparent !important;
+  pointer-events: none;
+}
+
+.os-related-products .card__inner > .card__content > .card__badge {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  display: flex;
+  margin: 0;
+}
+
+.os-related-products .card__badge .badge {
+  display: inline-flex;
+  min-height: 2.8rem;
+  padding: 0 1rem;
+  align-items: center;
+  border: 0;
+  border-radius: 0;
+  background: var(--os-red, #e3000f);
+  color: #fff;
+  font-family: var(--os-font-d, 'Bebas Neue', Impact, sans-serif);
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.os-related-products .card__corner {
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.os-related-products .card-wrapper:hover .card__corner {
+  opacity: 1;
+}
+
+.os-related-products .card__sold-out-stamp {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  display: flex !important;
+  padding: 0.75rem 1.3rem;
+  align-items: center;
+  border: 2px solid var(--os-red, #e3000f);
+  background: rgba(5, 5, 5, 0.74);
+  color: #fff;
+  transform: translate(-50%, -50%) rotate(-6deg);
+}
+
+.os-related-products .card__sold-out-stamp span {
+  font-family: var(--os-font-d, 'Bebas Neue', Impact, sans-serif);
+  font-size: 1.8rem;
+  letter-spacing: 0.17em;
+  white-space: nowrap;
+}
+
+.os-related-products .card > .card__content {
+  display: grid;
+  padding: 1.6rem !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  background: #0b0b0b !important;
+}
+
+.os-related-products .card > .card__content .card__information {
+  min-height: 7.2rem;
+  padding: 0 !important;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  background: transparent !important;
+}
+
+.os-related-products .card__heading,
+.os-related-products .card__heading a {
+  color: rgba(255, 255, 255, 0.84) !important;
+  font-family: var(--os-font-b, 'Inter', system-ui, sans-serif) !important;
+  font-size: 1.42rem !important;
+  font-weight: 500 !important;
+  line-height: 1.38 !important;
+  letter-spacing: 0 !important;
+  text-decoration: none !important;
+  text-transform: none !important;
+}
+
+.os-related-products .card__heading {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  border-bottom: 0 !important;
+}
+
+.os-related-products .price,
+.os-related-products .price-item {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-family: var(--os-font-b, 'Inter', system-ui, sans-serif) !important;
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+.os-related-products .price-item--sale {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+
+.os-related-products .price-item--regular {
+  color: rgba(255, 255, 255, 0.34) !important;
+}
+
+.os-related-products .quick-add,
+.os-related-products .card__shop-now {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  margin: 0;
+}
+
+.os-related-products .quick-add {
+  grid-column: 1;
+  grid-row: 2;
+  opacity: 1;
+  transform: none;
+}
+
+.os-related-products .card__shop-now {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.os-related-products .quick-add__submit,
+.os-related-products .card__shop-now {
+  min-height: 4.4rem;
+  padding: 0 1rem;
+  border-radius: 0;
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.12em;
+}
+
+.os-related-products .quick-add__submit:not(:disabled) {
+  border-color: var(--os-red, #e3000f);
+  background: var(--os-red, #e3000f);
+  color: #fff;
+}
+
+.os-related-products .card__shop-now:not([aria-disabled='true']):not(:disabled) {
+  border: 1px solid var(--os-gold, #c9a84c);
+  background: transparent;
+  color: var(--os-gold, #c9a84c);
+}
+
+.os-related-products .quick-add__submit:disabled,
+.os-related-products .card__shop-now:disabled,
+.os-related-products .card__shop-now[aria-disabled='true'] {
+  border: 1px solid #303030;
+  background: #121212;
+  color: rgba(255, 255, 255, 0.28);
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: 749px) {
+  .os-related-products {
+    padding-right: 0;
+  }
+
+  .os-related-products .related-products__header {
+    display: block;
+    margin: 0 1.5rem 2.4rem 0;
+  }
+
+  .os-related-products .related-products__heading {
+    font-size: 4rem;
+  }
+
+  .os-related-products .related-products__intro {
+    max-width: 29rem;
+    margin: 1.2rem 0 0;
+    font-size: 1.08rem;
+    text-align: left;
+  }
+
+  .os-related-products .product-grid {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 0 1.5rem 1.2rem 0;
+    scroll-padding-left: 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .os-related-products .product-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .os-related-products .product-grid > .grid__item {
+    width: min(82vw, 32rem);
+    max-width: min(82vw, 32rem);
+    flex: 0 0 min(82vw, 32rem);
+    scroll-snap-align: start;
+  }
+
+  .os-related-products .card__inner.ratio {
+    height: 27rem !important;
+    flex-basis: 27rem;
+  }
+
+  .os-related-products .card > .card__content {
+    padding: 1.4rem !important;
+  }
+
+  .os-related-products .card > .card__content .card__information {
+    min-height: 6.6rem;
+  }
+
+  .os-related-products .card__heading,
+  .os-related-products .card__heading a {
+    font-size: 1.28rem !important;
+  }
+
+  .os-related-products .quick-add__submit,
+  .os-related-products .card__shop-now {
+    min-height: 4.2rem;
+    font-size: 0.7rem;
+  }
 }

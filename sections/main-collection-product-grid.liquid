@@ -37,6 +37,7 @@
 {%- endstyle -%}
 
 <collection-component
+  class="os-collection-page"
   view-event-payload="{{ collection | standard_event_data: 'view' | escape }}"
   data-collection-id="{{ collection.id }}"
 >
@@ -103,6 +104,7 @@
 
       <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
         {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+        {{ 'section-collection-page.css' | asset_url | stylesheet_tag }}
         <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
         {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
           <aside
@@ -129,17 +131,13 @@
           {% endif %}
         >
           {%- if collection.products.size == 0 -%}
-            <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
+            <div class="collection collection--empty" id="product-grid" data-id="{{ section.id }}">
               <div class="loading-overlay gradient"></div>
-              <div class="title-wrapper center">
-                <h2 class="title title--primary">
-                  {{ 'sections.collection_template.empty' | t -}}
-                  <br>
-                  {{
-                    'sections.collection_template.use_fewer_filters_html'
-                    | t: link: collection.url, class: 'underlined-link link'
-                  }}
-                </h2>
+              <div class="os-collection-empty">
+                <p class="os-collection-empty__eyebrow">NO MATCHES / REFINE SELECTION</p>
+                <h2 class="os-collection-empty__title">NO PRODUCTS FOUND</h2>
+                <p class="os-collection-empty__copy">Try removing a filter or reset the selection to see every piece.</p>
+                <a class="os-collection-empty__action" href="{{ collection.url }}">CLEAR FILTERS</a>
               </div>
             </div>
           {%- else -%}
@@ -179,6 +177,9 @@
                       lazy_load: lazy_load,
                       skip_styles: skip_card_product_styles,
                       quick_add: section.settings.quick_add,
+                      quick_add_label: 'ADD TO CART',
+                      show_shop_now: true,
+                      shop_now_label: 'BUY NOW',
                       section_id: section.id,
                       product_view_context: 'collection'
                     %}
@@ -206,6 +207,24 @@
   "name": "t:sections.main-collection-product-grid.name",
   "class": "section",
   "settings": [
+    {
+      "type": "text",
+      "id": "grid_eyebrow",
+      "label": "Grid eyebrow",
+      "default": "SELECT YOUR PIECE"
+    },
+    {
+      "type": "text",
+      "id": "grid_heading",
+      "label": "Grid heading",
+      "default": "SHOP THE ARCHIVE."
+    },
+    {
+      "type": "text",
+      "id": "grid_note",
+      "label": "Grid note",
+      "default": "Limited pieces / No restocks"
+    },
     {
       "type": "range",
       "id": "products_per_page",

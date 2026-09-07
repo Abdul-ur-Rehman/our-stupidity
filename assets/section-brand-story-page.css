@@ -1,0 +1,621 @@
+.os-brand-story {
+  --story-red: #e00012;
+  --story-gold: #c7a94b;
+  --story-ink: #070707;
+  --story-panel: #101010;
+  overflow: hidden;
+  background: var(--story-ink);
+  color: #f5f1e9;
+}
+
+.os-brand-story__hero {
+  position: relative;
+  min-height: clamp(66rem, calc(100svh - 8rem), 82rem);
+  isolation: isolate;
+  border-bottom: 1px solid rgba(199, 169, 75, 0.58);
+  background: #050505;
+}
+
+.os-brand-story__hero-media {
+  position: absolute;
+  z-index: -3;
+  inset: 0 0 0 40%;
+  overflow: hidden;
+}
+
+.os-brand-story__hero-media::before,
+.os-brand-story__hero-media::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  inset: 0;
+}
+
+.os-brand-story__hero-media::before {
+  background: linear-gradient(90deg, #050505 0%, rgba(5, 5, 5, 0.96) 9%, rgba(5, 5, 5, 0.35) 34%, transparent 60%);
+}
+
+.os-brand-story__hero-media::after {
+  background: linear-gradient(0deg, rgba(5, 5, 5, 0.64), transparent 32%), rgba(95, 0, 6, 0.08);
+  mix-blend-mode: multiply;
+}
+
+.os-brand-story__hero-image,
+.os-brand-story__hero-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 44%;
+}
+
+.os-brand-story__hero-grid,
+.os-brand-story__manifesto-grid {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  opacity: 0.22;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 7rem 7rem;
+  mask-image: linear-gradient(90deg, black, transparent 76%);
+}
+
+.os-brand-story__hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: min(136rem, calc(100% - 8rem));
+  min-height: inherit;
+  margin: 0 auto;
+  padding: 10rem 0 8rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.os-brand-story__eyebrow,
+.os-brand-story__manifesto-eyebrow,
+.os-brand-story__section-heading > div > p {
+  display: flex;
+  margin: 0 0 2.4rem;
+  align-items: center;
+  gap: 1.4rem;
+  color: var(--story-gold);
+  font-family: var(--font-body-family);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.os-brand-story__eyebrow span {
+  width: 4rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.os-brand-story__title {
+  max-width: 69rem;
+  margin: 0;
+  color: #f5f1e9;
+  font-family: 'Bebas Neue', var(--font-heading-family), sans-serif;
+  font-size: clamp(7rem, 7.2vw, 11.5rem);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 0.86;
+  text-wrap: balance;
+}
+
+.os-brand-story__title strong {
+  display: block;
+  color: var(--story-red);
+  font-weight: inherit;
+}
+
+.os-brand-story__hero-copy {
+  max-width: 51rem;
+  margin-top: 3.2rem;
+  color: rgba(245, 241, 233, 0.64);
+  font-family: var(--font-body-family);
+  font-size: 1.45rem;
+  line-height: 1.75;
+}
+
+.os-brand-story__hero-copy p {
+  margin: 0 0 1rem;
+}
+
+.os-brand-story__principles {
+  display: flex;
+  margin-top: 3rem;
+  gap: 0;
+}
+
+.os-brand-story__principles span {
+  padding: 1rem 1.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.os-brand-story__principles span + span {
+  border-left: 0;
+}
+
+.os-brand-story__watermark {
+  position: absolute;
+  z-index: 0;
+  top: 51%;
+  left: 50%;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.055);
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(13rem, 18vw, 29rem);
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.os-brand-story__statement {
+  display: grid;
+  padding-top: 11rem;
+  padding-bottom: 11rem;
+  grid-template-columns: minmax(16rem, 0.45fr) 1.55fr;
+  gap: 7rem;
+}
+
+.os-brand-story__statement-index {
+  display: block;
+  min-height: 0;
+  padding-right: 4rem;
+  border-right: 1px solid rgba(199, 169, 75, 0.28);
+}
+
+.os-brand-story__statement-index span {
+  color: var(--story-gold);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+}
+
+.os-brand-story__statement-content h2 {
+  max-width: 95rem;
+  margin: 0;
+  color: #f5f1e9;
+  font-family: 'Bebas Neue', var(--font-heading-family), sans-serif;
+  font-size: clamp(4.8rem, 5vw, 8rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.os-brand-story__statement-content h2 em,
+.os-brand-story__manifesto h2 em {
+  color: var(--story-red);
+  font-style: normal;
+}
+
+.os-brand-story__statement-copy {
+  display: grid;
+  max-width: 88rem;
+  margin-top: 3.6rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  color: rgba(245, 241, 233, 0.58);
+  font-size: 1.4rem;
+  line-height: 1.8;
+}
+
+.os-brand-story__statement-copy p {
+  margin: 0;
+}
+
+.os-brand-story__statement-copy strong {
+  color: #f5f1e9;
+  font-weight: 500;
+}
+
+.os-brand-story__journey {
+  padding: 10rem 0 11rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: radial-gradient(circle at 82% 18%, rgba(224, 0, 18, 0.09), transparent 32%), #090909;
+}
+
+.os-brand-story__section-heading {
+  display: grid;
+  margin-bottom: 5rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 4rem;
+}
+
+.os-brand-story__section-heading > div > p {
+  margin-bottom: 1.4rem;
+}
+
+.os-brand-story__section-heading h2 {
+  max-width: 76rem;
+  margin: 0;
+  color: #f5f1e9;
+  font-family: 'Bebas Neue', var(--font-heading-family), sans-serif;
+  font-size: clamp(5rem, 5.4vw, 8.5rem);
+  font-weight: 400;
+  line-height: 0.94;
+}
+
+.os-brand-story__section-heading > p {
+  max-width: 30rem;
+  margin: 0 0 0.7rem;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 1.2rem;
+  letter-spacing: 0.06em;
+}
+
+.os-brand-story__chapters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+.os-brand-story__chapter {
+  position: relative;
+  min-height: 39rem;
+  padding: 3.4rem;
+  overflow: hidden;
+  background: rgba(12, 12, 12, 0.86);
+  transition: background 220ms ease, transform 220ms ease;
+}
+
+.os-brand-story__chapter + .os-brand-story__chapter {
+  border-left: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+.os-brand-story__chapter::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--story-red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 260ms ease;
+}
+
+.os-brand-story__chapter:hover {
+  background: #121212;
+  transform: translateY(-0.5rem);
+}
+
+.os-brand-story__chapter:hover::after {
+  transform: scaleX(1);
+}
+
+.os-brand-story__chapter-top {
+  display: flex;
+  margin-bottom: 5.8rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.os-brand-story__chapter-top span {
+  color: var(--story-red);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+}
+
+.os-brand-story__chapter-top strong {
+  color: rgba(255, 255, 255, 0.07);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 7rem;
+  font-weight: 400;
+  line-height: 0.62;
+}
+
+.os-brand-story__chapter-jp {
+  margin: 0 0 1rem;
+  color: var(--story-gold);
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.08em;
+}
+
+.os-brand-story__chapter h3 {
+  margin: 0;
+  color: #f5f1e9;
+  font-family: 'Bebas Neue', var(--font-heading-family), sans-serif;
+  font-size: 3.8rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.os-brand-story__chapter-copy {
+  max-width: 34rem;
+  margin-top: 2rem;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 1.3rem;
+  line-height: 1.75;
+}
+
+.os-brand-story__chapter-copy p {
+  margin: 0;
+}
+
+.os-brand-story__manifesto {
+  position: relative;
+  isolation: isolate;
+  padding: 12rem 0;
+  background: radial-gradient(circle at 90% 50%, rgba(224, 0, 18, 0.16), transparent 32%), #070707;
+}
+
+.os-brand-story__manifesto-grid {
+  mask-image: linear-gradient(90deg, transparent 15%, black 100%);
+}
+
+.os-brand-story__manifesto-eyebrow {
+  margin-bottom: 2rem;
+}
+
+.os-brand-story__manifesto h2 {
+  max-width: 112rem;
+  margin: 0;
+  color: #f5f1e9;
+  font-family: 'Bebas Neue', var(--font-heading-family), sans-serif;
+  font-size: clamp(6rem, 7vw, 11rem);
+  font-weight: 400;
+  line-height: 0.94;
+}
+
+.os-brand-story__manifesto-bottom {
+  display: flex;
+  margin-top: 4.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.os-brand-story__manifesto-copy {
+  max-width: 60rem;
+  color: rgba(255, 255, 255, 0.54);
+  font-size: 1.4rem;
+  line-height: 1.7;
+}
+
+.os-brand-story__manifesto-copy p {
+  margin: 0;
+}
+
+.os-brand-story__button {
+  display: inline-flex;
+  min-width: 27rem;
+  min-height: 5.8rem;
+  padding: 1.5rem 2.8rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  border: 1px solid var(--story-red);
+  background: var(--story-red);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+
+.os-brand-story__button:hover {
+  border-color: #b8000c;
+  background: #b8000c;
+}
+
+.os-brand-story__button span {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+@media screen and (max-width: 989px) {
+  .os-brand-story__hero-media {
+    left: 30%;
+  }
+
+  .os-brand-story__hero-content {
+    width: calc(100% - 6rem);
+  }
+
+  .os-brand-story__statement {
+    gap: 4rem;
+  }
+
+  .os-brand-story__chapters {
+    grid-template-columns: 1fr;
+  }
+
+  .os-brand-story__chapter {
+    min-height: 31rem;
+  }
+
+  .os-brand-story__chapter + .os-brand-story__chapter {
+    border-top: 1px solid rgba(255, 255, 255, 0.11);
+    border-left: 0;
+  }
+
+  .os-brand-story__chapter-top {
+    margin-bottom: 3.8rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .os-brand-story__hero {
+    min-height: 76rem;
+  }
+
+  .os-brand-story__hero-media {
+    inset: 0;
+    height: 47rem;
+  }
+
+  .os-brand-story__hero-media::before {
+    background: linear-gradient(0deg, #050505 0%, rgba(5, 5, 5, 0.9) 18%, transparent 65%);
+  }
+
+  .os-brand-story__hero-media::after {
+    background: linear-gradient(0deg, #050505 0%, transparent 40%);
+  }
+
+  .os-brand-story__hero-image {
+    object-position: center 42%;
+  }
+
+  .os-brand-story__hero-content {
+    width: calc(100% - 4rem);
+    min-height: 76rem;
+    padding: 37rem 0 5rem;
+    justify-content: flex-start;
+  }
+
+  .os-brand-story__eyebrow {
+    margin-bottom: 1.8rem;
+    font-size: 0.9rem;
+  }
+
+  .os-brand-story__eyebrow span {
+    width: 2.6rem;
+  }
+
+  .os-brand-story__title {
+    max-width: 35rem;
+    font-size: clamp(5.8rem, 17vw, 7.4rem);
+  }
+
+  .os-brand-story__hero-copy {
+    margin-top: 2.2rem;
+    font-size: 1.25rem;
+    line-height: 1.65;
+  }
+
+  .os-brand-story__principles {
+    width: 100%;
+    margin-top: 2.2rem;
+  }
+
+  .os-brand-story__principles span {
+    width: 50%;
+    padding: 0.9rem 0.8rem;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  .os-brand-story__watermark {
+    top: 54%;
+    font-size: 30vw;
+  }
+
+  .os-brand-story__statement {
+    display: block;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  .os-brand-story__statement-index {
+    min-height: 0;
+    margin-bottom: 3rem;
+    padding: 0 0 1.8rem;
+    flex-direction: row;
+    align-items: flex-end;
+    border-right: 0;
+    border-bottom: 1px solid rgba(199, 169, 75, 0.28);
+  }
+
+  .os-brand-story__statement-content h2 {
+    font-size: clamp(4.2rem, 13vw, 5.8rem);
+  }
+
+  .os-brand-story__statement-copy {
+    display: block;
+    margin-top: 2.5rem;
+    font-size: 1.25rem;
+  }
+
+  .os-brand-story__statement-copy p + p {
+    margin-top: 1.6rem;
+  }
+
+  .os-brand-story__journey {
+    padding: 7rem 0;
+  }
+
+  .os-brand-story__section-heading {
+    display: block;
+    margin-bottom: 3.5rem;
+  }
+
+  .os-brand-story__section-heading h2 {
+    font-size: clamp(4.5rem, 14vw, 6rem);
+  }
+
+  .os-brand-story__section-heading > p {
+    margin-top: 1.8rem;
+  }
+
+  .os-brand-story__chapter {
+    min-height: 0;
+    padding: 2.8rem 2.4rem 3.2rem;
+  }
+
+  .os-brand-story__chapter-top {
+    margin-bottom: 2.5rem;
+  }
+
+  .os-brand-story__chapter-top strong {
+    font-size: 5.6rem;
+  }
+
+  .os-brand-story__chapter h3 {
+    font-size: 3.4rem;
+  }
+
+  .os-brand-story__chapter-copy {
+    font-size: 1.2rem;
+  }
+
+  .os-brand-story__manifesto {
+    padding: 8rem 0;
+  }
+
+  .os-brand-story__manifesto h2 {
+    font-size: clamp(5rem, 15vw, 7rem);
+  }
+
+  .os-brand-story__manifesto-bottom {
+    display: block;
+    margin-top: 3rem;
+  }
+
+  .os-brand-story__manifesto-copy {
+    font-size: 1.25rem;
+  }
+
+  .os-brand-story__button {
+    width: 100%;
+    min-width: 0;
+    margin-top: 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .os-brand-story__chapter,
+  .os-brand-story__chapter::after,
+  .os-brand-story__button {
+    transition: none;
+  }
+}

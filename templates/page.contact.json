@@ -9,49 +9,24 @@
  */
 {
   "sections": {
-    "rich_text": {
-      "type": "rich-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "GET IN TOUCH",
-            "heading_size": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>EMAIL</strong><br/>hello.ourstupidity@gmail.com</p><p><strong>INSTAGRAM</strong><br/>@ourstupidty</p><p><strong>RESPONSE TIME</strong><br/>We usually reply within 24–48 hours.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text"
-      ],
+    "contact_page": {
+      "type": "contact-page",
       "settings": {
-        "desktop_content_position": "left",
-        "content_alignment": "left",
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "padding_top": 60,
-        "padding_bottom": 20
-      }
-    },
-    "form": {
-      "type": "contact-form",
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "color_scheme": "scheme-1",
-        "padding_top": 0,
-        "padding_bottom": 60
+        "eyebrow": "OPEN CHANNEL / CUSTOMER SUPPORT",
+        "heading": "LET'S",
+        "heading_accent": "TALK.",
+        "intro": "<p>Questions, order support, sizing advice or a strange idea worth sharing—we are listening.</p>",
+        "watermark": "連絡",
+        "email": "hello.ourstupidity@gmail.com",
+        "whatsapp_url": "https://wa.link/i7jfr5",
+        "direct_note": "Available Monday through Saturday / Pakistan Standard Time",
+        "form_heading": "SEND A MESSAGE.",
+        "form_note": "Required fields are marked *",
+        "padding_bottom": 72
       }
     }
   },
   "order": [
-    "rich_text",
-    "form"
+    "contact_page"
   ]
 }

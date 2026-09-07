@@ -225,7 +225,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Don't Miss The Next Chronicle.",
+            "heading": "ENTER THE NEXT CHAPTER.",
             "heading_size": "h1"
           }
         },
@@ -239,10 +239,14 @@
         "email_form"
       ],
       "settings": {
+        "eyebrow": "PRIVATE RELEASE LIST",
+        "supporting_text": "Early access to limited drops, release dates and members-only updates.",
+        "button_label": "JOIN THE LIST",
+        "privacy_note": "No noise. Only drop alerts.",
         "color_scheme": "scheme-1",
         "full_width": true,
-        "padding_top": 80,
-        "padding_bottom": 80
+        "padding_top": 64,
+        "padding_bottom": 64
       }
     }
   },

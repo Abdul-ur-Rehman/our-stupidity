@@ -1,4 +1,6 @@
-<span class="field-currency">{{ cart.currency.symbol }}</span>
+{%- if filter_type != 'vertical' -%}
+  <span class="field-currency">{{ cart.currency.symbol }}</span>
+{%- endif -%}
 
 <div class="field">
   <input
@@ -16,11 +18,13 @@
     data-max="{{ filter.range_max | money_without_currency }}"
   >
   <label class="field__label" for="{{ id_prefix }}{{ filter.label | escape }}-GTE">
-    {{- 'products.facets.from' | t -}}
+    {%- if filter_type == 'vertical' %}Min{% else %}{{ 'products.facets.from' | t }}{% endif -%}
   </label>
 </div>
 
-{%- if filter_type != 'vertical' -%}
+{%- if filter_type == 'vertical' -%}
+  <span class="price-range__separator" aria-hidden="true">–</span>
+{%- else -%}
   <span class="field-currency">{{ cart.currency.symbol }}</span>
 {%- endif -%}
 
@@ -40,6 +44,6 @@
     data-max="{{ filter.range_max | money_without_currency }}"
   >
   <label class="field__label" for="{{ id_prefix }}{{ filter.label | escape }}-LTE">
-    {{- 'products.facets.to' | t -}}
+    {%- if filter_type == 'vertical' %}Max{% else %}{{ 'products.facets.to' | t }}{% endif -%}
   </label>
 </div>

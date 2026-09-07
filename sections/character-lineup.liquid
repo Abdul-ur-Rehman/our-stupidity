@@ -207,8 +207,213 @@
   }
 {%- endstyle -%}
 
-{%- assign char1 = section.blocks | where: 'type', 'character' | first -%}
-{%- assign char2 = section.blocks | where: 'type', 'character' | last -%}
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 82% 16%, rgba(227, 0, 15, 0.07), transparent 28%),
+      #080808;
+  }
+
+  #shopify-section-{{ section.id }} .lineup-hd {
+    width: min(136rem, calc(100% - 8rem));
+    margin: 0 auto;
+    padding: 7rem 0 4rem;
+  }
+
+  #shopify-section-{{ section.id }} .lineup-eyebrow {
+    margin: 0 0 1.2rem;
+    font-size: 1rem;
+  }
+
+  #shopify-section-{{ section.id }} .lineup-title {
+    max-width: 82rem;
+    font-size: clamp(4.6rem, 5vw, 7.4rem);
+    letter-spacing: 0.025em;
+    line-height: 0.95;
+  }
+
+  #shopify-section-{{ section.id }} .lineup-meta {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(12, 12, 12, 0.72);
+  }
+
+  #shopify-section-{{ section.id }} .lineup-meta-item {
+    min-width: 11rem;
+    padding: 1.6rem 2rem;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  #shopify-section-{{ section.id }} .lineup-meta-val {
+    font-size: 2.8rem;
+  }
+
+  #shopify-section-{{ section.id }} .char-grid {
+    gap: 1px;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  #shopify-section-{{ section.id }} .char-card {
+    height: clamp(52rem, 42vw, 64rem);
+    border: 0;
+    background: #090909;
+  }
+
+  #shopify-section-{{ section.id }} .char-card::after {
+    content: '';
+    position: absolute;
+    z-index: 6;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--os-red), var(--os-gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 260ms ease;
+  }
+
+  #shopify-section-{{ section.id }} .char-art {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  #shopify-section-{{ section.id }} .char-art::after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 34%, rgba(6, 6, 6, 0.2) 52%, rgba(6, 6, 6, 0.98) 100%);
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .char-number {
+    top: 2.4rem;
+    right: 2.6rem;
+    font-size: 7.5rem;
+    opacity: 0.09;
+  }
+
+  #shopify-section-{{ section.id }} .char-topline {
+    opacity: 0;
+    transition: opacity 220ms ease;
+  }
+
+  #shopify-section-{{ section.id }} .char-info {
+    position: absolute;
+    z-index: 4;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 12rem 3rem 3.2rem;
+    border: 0;
+    background: linear-gradient(180deg, transparent, rgba(6, 6, 6, 0.96) 48%);
+  }
+
+  #shopify-section-{{ section.id }} .char-series-label {
+    margin-bottom: 1rem;
+    color: var(--os-gold);
+  }
+
+  #shopify-section-{{ section.id }} .char-name {
+    margin-bottom: 0.8rem;
+    font-size: clamp(3.5rem, 3vw, 5rem);
+  }
+
+  #shopify-section-{{ section.id }} .char-jp {
+    margin-bottom: 1.8rem;
+    color: rgba(255, 255, 255, 0.45);
+    opacity: 1;
+  }
+
+  #shopify-section-{{ section.id }} .char-rule {
+    margin-bottom: 1.6rem;
+  }
+
+  #shopify-section-{{ section.id }} .char-cta {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  #shopify-section-{{ section.id }} .lineup-note {
+    min-height: 6rem;
+    padding: 1.6rem max(4rem, calc((100% - 136rem) / 2));
+    border-bottom: 1px solid var(--os-border);
+    background: #0b0b0b;
+  }
+
+  @media (hover: hover) {
+    #shopify-section-{{ section.id }} .char-card:hover {
+      border-color: transparent;
+    }
+
+    #shopify-section-{{ section.id }} .char-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    #shopify-section-{{ section.id }} .char-card:hover .char-topline {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .lineup-hd {
+      width: calc(100% - 4rem);
+      padding: 5.5rem 0 3rem;
+      gap: 2.8rem;
+    }
+
+    #shopify-section-{{ section.id }} .lineup-title {
+      font-size: clamp(4.2rem, 13vw, 5.8rem);
+    }
+
+    #shopify-section-{{ section.id }} .lineup-meta-item {
+      min-width: 0;
+      padding: 1.3rem 0.8rem;
+    }
+
+    #shopify-section-{{ section.id }} .lineup-meta-val {
+      font-size: 2.3rem;
+    }
+
+    #shopify-section-{{ section.id }} .char-grid {
+      display: flex;
+      gap: 1rem;
+      padding: 0 2rem 1.4rem;
+      overflow-x: auto;
+      scroll-padding-left: 2rem;
+      scroll-snap-type: x mandatory;
+      background: transparent;
+      scrollbar-width: none;
+    }
+
+    #shopify-section-{{ section.id }} .char-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .char-card {
+      width: 82vw;
+      height: 49rem;
+      flex: 0 0 82vw;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      scroll-snap-align: start;
+    }
+
+    #shopify-section-{{ section.id }} .char-info {
+      padding: 10rem 2.4rem 2.6rem;
+    }
+
+    #shopify-section-{{ section.id }} .char-name {
+      font-size: 3.8rem;
+    }
+
+    #shopify-section-{{ section.id }} .lineup-note {
+      padding: 1.5rem 2rem;
+    }
+  }
+{%- endstyle -%}
+
 {%- assign char_blocks = section.blocks | where: 'type', 'character' -%}
 
 <div class="lineup-hd">
